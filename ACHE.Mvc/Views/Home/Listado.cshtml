@@ -1,0 +1,343 @@
+﻿@model ACHE.Models.IndexViewModel
+
+@{
+    Layout = null;
+}
+
+@using PagedList.Mvc;
+@using PagedList;
+
+<!DOCTYPE html>
+<html lang="es">
+@Html.Partial("_header")
+<div class="container-fluid header-form-fixed">
+    <div class="container">
+        @using (Html.BeginForm("Listado", "Home", FormMethod.Post, new { @id = "form" })) {
+            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 checkin-cont">
+                <div class="form-group" id="checkin-datepicker">
+                    <label for="exampleInputEmail1">Check In</label>
+                    @Html.TextBoxFor(m => m.Desde, new { @class = "form-control", @placeholder = "dd/mm/aaaa" })
+                </div>
+            </div>
+@*<div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 checkout-cont">
+                <div class="form-group" id="meses-counter">
+                    <label for="exampleInputEmail1">Meses</label>
+                    @Html.TextBoxFor(m => m.CantMeses, new { @class = "form-control numeric", @maxlength = "1" })
+                </div>
+            </div>*@
+            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 barrio-cont">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Zona</label>
+                    @Html.DropDownListFor(m => m.IDZona, new SelectList(ViewBag.Zonas, "IDZona", "Nombre"), "Todas las zonas", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-4 ambientes-cont">
+                <div class="form-group" id="ambientes-counter">
+                    <label for="exampleInputEmail1">Ambientes</label>
+                    @Html.TextBoxFor(m => m.CantAmbientes, new { @class = "form-control numeric", @maxlength = "1" })
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 header-form-fixed-btn text-center">
+                <input type="submit" class="btn btn-success btn-medium" value="Buscar" />
+            </div>
+        }
+    </div>
+</div>
+<section id="listado">
+    @using (Html.BeginForm("Listado", "Home", FormMethod.Post, new { @id = "frmOrden" })) {
+        <div class="container-fluid list-header">
+            <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12 text-left list-header-h">
+                <h2>
+                    <img src="/img/icon-placeholder-white.svg" />
+                    Departamentos en <span class="txt-red">Buenos Aires</span>@ViewBag.ZonaActual
+                </h2>
+            </div>
+
+            <div class="col-lg-6 col-md-4 col-sm-12 col-xs-12 list-header-filtro">
+                <p>
+                    Orden:
+                @Html.DropDownListFor(m => m.Orden, new List<SelectListItem>
+                 {
+                    new SelectListItem{ Text="Menor precio", Value = "1", Selected=true },
+                    new SelectListItem{ Text="Mayor precio", Value = "2" }
+                 }, new { @id = "cmbOrden", @class = "form-control", @onchange = "$('#frmOrden').submit();" })
+                </p>
+            </div>
+        </div>
+    }
+    @if (ViewBag.OnePageOfProducts != null && ViewBag.Cantidad > 0) {
+        <div class="container-fluid list-main-cont">
+            <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12 list-prop">
+                @for (int i = 0; i < ViewBag.Cantidad; i++) {
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 list-prop-box">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 list-prop-slider-cont">
+                            <div id='slider_@i' class="carousel slide list-prop-slider" data-ride="carousel" data-interval="false">
+                                <ol class="carousel-indicators">
+                                    @*@if (ViewBag.OnePageOfProducts[i].CantFotos != null) {*@
+                                    @for (int d = 0; d < ViewBag.OnePageOfProducts[i].CantFotos; d++) {
+                                        if (d == 0) {
+                                        <li data-target="#slider1-list" data-slide-to="@d" class="active"></li>    
+                                        }
+                                        else {
+                                        <li data-target="#slider1-list" data-slide-to="@d"></li>        
+                                        }
+                                    }
+                                </ol>
+                                <div class="carousel-inner" role="listbox">
+                                    @for (int e = 0; e < ViewBag.OnePageOfProducts[i].CantFotos; e++) {
+                                        if (e == 0) { 
+                                        <div class="item active">
+                                            <img src="/files/propiedades/@ViewBag.OnePageOfProducts[i].Fotos[e].Foto" />
+                                        </div>
+                                        }
+                                        else {
+                                        <div class="item">
+                                            <img src="/files/propiedades/@ViewBag.OnePageOfProducts[i].Fotos[e].Foto" />
+                                        </div>
+                                        }
+                                    }
+                                </div>
+                                <a class="left carousel-control" href="#slider_@i" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true">
+                                        <img src="/img/left-arrow.svg" /></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="right carousel-control" href="#slider_@i" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">
+                                        <img src="/img/right-arrow.svg" /></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 list-prop-content">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-left list-prop-precio">
+                                <p><strong>$@ViewBag.OnePageOfProducts[i].Precio ARS.</strong>/mes</p>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right list-prop-calidad">
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 list-prop-desc">
+                                <hr>
+                                <h3><a href="@Url.Action("Detalle", "Home", new { id = @ViewBag.OnePageOfProducts[i].NombreFriendly + "/" + @ViewBag.OnePageOfProducts[i].IDPropiedad })">@ViewBag.OnePageOfProducts[i].Nombre</a></h3>
+                                <p class="barrio">@ViewBag.OnePageOfProducts[i].Zona, Buenos Aires</p>
+                                <p class="calle">@ViewBag.OnePageOfProducts[i].Direccion</p>
+                                <p class="text-justify">@ViewBag.OnePageOfProducts[i].Descripcion</p>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 list-prop-features">
+                                    <img src="/img/icon-ambientes.svg" />@ViewBag.OnePageOfProducts[i].CantAmbientes Ambientes
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 list-prop-features">
+                                    <img src="/img/icon-huespedes.svg" />@ViewBag.OnePageOfProducts[i].CantHuespedes Huéspedes
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 list-prop-btn text-center">
+                                <a href="@Url.Action("Detalle", "Home", new { id = @ViewBag.OnePageOfProducts[i].NombreFriendly + "/" + @ViewBag.OnePageOfProducts[i].IDPropiedad })" class="btn btn-default-red full">Ver detalle de propiedad</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 list-prop-divisor">
+                        <hr>
+                    </div>
+                }
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center pag">
+                    @if (Model.IDZona > 0 || Model.Desde != DateTime.MinValue || Model.CantMeses > 0 || Model.CantAmbientes > 0 || Model.CantHuespedes > 0) {
+                        @Html.PagedListPager((IPagedList)ViewBag.OnePageOfProducts, page => Url.Action("Listado", "Home", new { page = page, desde = Model.Desde, cantMeses = Model.CantMeses, idZona = Model.IDZona, cantAmbientes = Model.CantAmbientes }))
+                    }
+                    else {
+                        @Html.PagedListPager((IPagedList)ViewBag.OnePageOfProducts, page => Url.Action("Listado", new { page = page }))
+                    }
+                </div>
+                @*<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center pag">
+                    <ul>
+                        <li class="active">1</li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li class="etc">...</li>
+                        <li><a href="#">10</a></li>
+                        <li><a href="#">&raquo;</a></li>
+                    </ul>
+                </div>*@
+            </div>
+            <div class="col-lg-5 col-md-12 col-lg-12 col-lg-12 list-map-container">
+                <div id="map"></div>
+            </div>
+        </div>
+    }
+    else {
+        <div class="container-fluid list-main-cont">
+            <h3><span class="txt-red">No se han encontrado resultados para la busqueda, por favor intente nuevamente.</span></h3>
+        </div>
+    }
+</section>
+@Html.Partial("_footer")
+<script>
+    // Google Maps
+
+    @*var dataArray = '@(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(ViewBag.Matriz))';
+    dataArray = dataArray.replace("&", "").replace("quot", "");
+    alert(dataArray);*@
+
+    //function cambiarOrden() {
+    //    var orden = $("#cmbOrden").val();
+    //    $.ajax({
+    //        type: "POST",
+    //        url: "/Home/ListadoOrden",
+    //        data: "{ orden: " + orden + " }",
+    //        contentType: "application/json; charset=utf-8",
+    //        dataType: "json",
+    //        success: function (data) {
+    //        },
+    //        error: function (thrownError) {
+    //        }
+    //    });
+    //}
+
+    $(document).ready(function () {
+
+    });
+
+    var locations = [];
+
+    $.ajax({
+        type: "POST",
+        url: "/Home/GetMarkers",
+        //data: "{ codigo: '" + codigo + "' }",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            for (var i = 0; i < data.length; i++) {
+                locations.push([data[i].Nombre, data[i].Latitud, data[i].Longitud, data[i].Descripcion, data[i].Foto, data[i].Link, data[i].Orden]);
+            }
+            mapa(locations);
+        },
+        error: function (thrownError) {
+            //alert(thrownError.responseText);
+        }
+    });
+
+    @*var locations = [
+      ['@Model.Propiedades', -34.584050, -58.414262, 1],
+      ['Departmento en Palermo Hollywood', -34.578295, -58.410716, 2],
+      ['Departmento en Palermo Hollywood', -34.582849, -58.408194, 3]
+        ];*@
+
+
+    // DATEPICKERS 
+    // http://eternicode.github.io/bootstrap-datepicker
+    // http://vitalets.github.io/bootstrap-datepicker/
+
+    ; (function ($) {
+        $.fn.datepicker.dates['es'] = {
+            days: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"],
+            daysShort: ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"],
+            daysMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa", "Do"],
+            months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+            monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+            today: "Hoy"
+        };
+    }(jQuery));
+
+    $(".numeric").numeric();
+
+    $('#checkin-datepicker input, #checkout-datepicker input').datepicker({
+        format: "dd/mm/yyyy",
+        //minViewMode: 1,
+        todayBtn: true,
+        title: "",
+        language: "es"
+    });
+
+    $('#checkin-datepicker input, #checkout-datepicker input').val("");
+
+    $('#dp6').datepicker({
+        language: "es",
+        format: "dd/mm/yyyy",
+        startDate: "01/06/2015",
+        endDate: "30/06/2015"
+    });
+    $('#dp7').datepicker({
+        language: "es",
+        format: "dd/mm/yyyy",
+        startDate: "01/07/2015",
+        endDate: "30/07/2015"
+    });
+
+    // COUNTERS (http://www.virtuosoft.eu/code/bootstrap-touchspin/)
+    $("input[name='ambientes']").TouchSpin({
+        verticalbuttons: true,
+        min: 1,
+        max: 4,
+    });
+
+    $("input[name='huespedes']").TouchSpin({
+        verticalbuttons: true,
+        min: 1,
+        max: 10,
+    });
+
+    function mapa(locations) {
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 12,
+            center: new google.maps.LatLng(-34.6085406, -58.37499600000001),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+
+        var infowindow = new google.maps.InfoWindow();
+
+        var marker, i;
+        var gmarkers = [];
+
+        for (i = 0; i < locations.length; i++) {
+            var markerCoords = new google.maps.LatLng(locations[i][1], locations[i][2]);            
+            var marker = new google.maps.Marker({
+                position: markerCoords,
+                //icon: icono,
+                //shadow: iconShadow,
+                map: map,
+                title: locations[i][0],
+                zIndex: Math.round(markerCoords.lat() * -100000) << 5,
+                description: locations[i][3],
+                content: "",
+                link: locations[i][5],
+                photo: locations[i][4]
+            });
+
+            var infoWindow = new google.maps.InfoWindow();
+            google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                return function () {
+
+                    var aux = '<div id="contentInfoWindow' + i + '" class="contentMap">\
+                                <div class="contentImg">\
+                                   <table><tr><td><img src="/files/propiedades/' + this.photo + '" title="" style="width:150px" /></td>\
+                                    <td style="padding-left: 10px;"><h4>' + this.title + '</h4></td></tr></table>\
+                                </div>\
+                                <div class="contentTxt">\
+                                    <a href="/Home/Detalle/' + this.link + '">Ver propiedad</a>\
+                                </div>\
+                                <div class="clear"></div>\
+                            </div>'
+
+                    infoWindow.setContent(aux);
+                    infoWindow.open(map, marker);
+                }
+            })(marker, i));
+
+            gmarkers.push(marker);
+
+
+            /*marker = new google.maps.Marker({
+                position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                map: map
+            });
+
+            google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                return function () {
+                    infowindow.setContent(locations[i][0]);
+                    infowindow.open(map, marker);
+                }
+            })(marker, i));*/
+        }
+    }
+</script>
+</body>
+</html>

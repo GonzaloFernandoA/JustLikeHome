@@ -1,0 +1,2453 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E8250B78-6BC2-494B-9ED1-AFC6A825CC0F}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ACHE.Mvc</RootNamespace>
+    <AssemblyName>ACHE.Mvc</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ImageResizer">
+      <HintPath>..\packages\ImageResizer.3.4.3\lib\ImageResizer.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageResizer.Mvc">
+      <HintPath>..\packages\ImageResizer.Mvc.3.4.3\lib\ImageResizer.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20715.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="admin\Admin.Master.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Admin.Master.designer.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="admin\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\error_404.aspx.cs">
+      <DependentUpon>error_404.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\error_404.aspx.designer.cs">
+      <DependentUpon>error_404.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\error_500.aspx.cs">
+      <DependentUpon>error_500.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\error_500.aspx.designer.cs">
+      <DependentUpon>error_500.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\home.aspx.cs">
+      <DependentUpon>home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\home.aspx.designer.cs">
+      <DependentUpon>home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\logout.aspx.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\logout.aspx.designer.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\modulos\administracion\clientes.aspx.cs">
+      <DependentUpon>clientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\modulos\administracion\clientes.aspx.designer.cs">
+      <DependentUpon>clientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\modulos\administracion\clientese.aspx.cs">
+      <DependentUpon>clientese.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\modulos\administracion\clientese.aspx.designer.cs">
+      <DependentUpon>clientese.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\modulos\administracion\reservas.aspx.cs">
+      <DependentUpon>reservas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\modulos\administracion\reservas.aspx.designer.cs">
+      <DependentUpon>reservas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\modulos\administracion\reservase.aspx.cs">
+      <DependentUpon>reservase.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\modulos\administracion\reservase.aspx.designer.cs">
+      <DependentUpon>reservase.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\modulos\configuracion\listasPrecios.aspx.cs">
+      <DependentUpon>listasPrecios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\modulos\configuracion\listasPrecios.aspx.designer.cs">
+      <DependentUpon>listasPrecios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\modulos\configuracion\listasPreciose.aspx.cs">
+      <DependentUpon>listasPreciose.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\modulos\configuracion\listasPreciose.aspx.designer.cs">
+      <DependentUpon>listasPreciose.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\modulos\configuracion\precios.aspx.cs">
+      <DependentUpon>precios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\modulos\configuracion\precios.aspx.designer.cs">
+      <DependentUpon>precios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\modulos\configuracion\preciose.aspx.cs">
+      <DependentUpon>preciose.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\modulos\configuracion\preciose.aspx.designer.cs">
+      <DependentUpon>preciose.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\modulos\configuracion\servicios.aspx.cs">
+      <DependentUpon>servicios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\modulos\configuracion\servicios.aspx.designer.cs">
+      <DependentUpon>servicios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\modulos\configuracion\serviciose.aspx.cs">
+      <DependentUpon>serviciose.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\modulos\configuracion\serviciose.aspx.designer.cs">
+      <DependentUpon>serviciose.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\modulos\configuracion\zonas.aspx.cs">
+      <DependentUpon>zonas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\modulos\configuracion\zonas.aspx.designer.cs">
+      <DependentUpon>zonas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\modulos\configuracion\zonase.aspx.cs">
+      <DependentUpon>zonase.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\modulos\configuracion\zonase.aspx.designer.cs">
+      <DependentUpon>zonase.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\modulos\propiedades\fotos.aspx.cs">
+      <DependentUpon>fotos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\modulos\propiedades\fotos.aspx.designer.cs">
+      <DependentUpon>fotos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\modulos\propiedades\propiedades.aspx.cs">
+      <DependentUpon>propiedades.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\modulos\propiedades\propiedades.aspx.designer.cs">
+      <DependentUpon>propiedades.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\modulos\propiedades\propiedadese.aspx.cs">
+      <DependentUpon>propiedadese.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\modulos\propiedades\propiedadese.aspx.designer.cs">
+      <DependentUpon>propiedadese.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\AdminBasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Code\BasicLog.cs" />
+    <Compile Include="App_Code\WebBasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Code\WebUser.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DetalleViewModel.cs" />
+    <Compile Include="Models\IndexViewModel.cs" />
+    <Compile Include="Models\ListadoViewModel.cs" />
+    <Compile Include="Models\MarkerViewModel.cs" />
+    <Compile Include="Models\ReservaFrontViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="admin\assets\advanced-datatable\docs\34cdb56b2c.html" />
+    <Content Include="admin\assets\advanced-datatable\docs\DataTable.defaults.columns.html" />
+    <Content Include="admin\assets\advanced-datatable\docs\DataTable.defaults.html" />
+    <Content Include="admin\assets\advanced-datatable\docs\DataTable.defaults.oLanguage.html" />
+    <Content Include="admin\assets\advanced-datatable\docs\DataTable.defaults.oLanguage.oAria.html" />
+    <Content Include="admin\assets\advanced-datatable\docs\DataTable.defaults.oLanguage.oPaginate.html" />
+    <Content Include="admin\assets\advanced-datatable\docs\DataTable.defaults.oSearch.html" />
+    <Content Include="admin\assets\advanced-datatable\docs\DataTable.ext.html" />
+    <Content Include="admin\assets\advanced-datatable\docs\DataTable.html" />
+    <Content Include="admin\assets\advanced-datatable\docs\DataTable.models.ext.html" />
+    <Content Include="admin\assets\advanced-datatable\docs\DataTable.models.html" />
+    <Content Include="admin\assets\advanced-datatable\docs\DataTable.models.oColumn.html" />
+    <Content Include="admin\assets\advanced-datatable\docs\DataTable.models.oRow.html" />
+    <Content Include="admin\assets\advanced-datatable\docs\DataTable.models.oSearch.html" />
+    <Content Include="admin\assets\advanced-datatable\docs\DataTable.models.oSettings.html" />
+    <Content Include="admin\assets\advanced-datatable\docs\DataTable.models.oSettings.oBrowser.html" />
+    <Content Include="admin\assets\advanced-datatable\docs\DataTable.models.oSettings.oFeatures.html" />
+    <Content Include="admin\assets\advanced-datatable\docs\DataTable.models.oSettings.oLanguage.html" />
+    <Content Include="admin\assets\advanced-datatable\docs\DataTable.models.oSettings.oPreviousSearch.html" />
+    <Content Include="admin\assets\advanced-datatable\docs\DataTable.models.oSettings.oScroll.html" />
+    <Content Include="admin\assets\advanced-datatable\docs\index.html" />
+    <Content Include="admin\assets\advanced-datatable\docs\media\css\doc.css" />
+    <Content Include="admin\assets\advanced-datatable\docs\media\css\shCore.css" />
+    <Content Include="admin\assets\advanced-datatable\docs\media\css\shThemeDataTables.css" />
+    <Content Include="admin\assets\advanced-datatable\docs\media\images\arrow.jpg" />
+    <Content Include="admin\assets\advanced-datatable\docs\media\images\arrow.png" />
+    <Content Include="admin\assets\advanced-datatable\docs\media\images\extended.png" />
+    <Content Include="admin\assets\advanced-datatable\docs\media\js\doc.js" />
+    <Content Include="admin\assets\advanced-datatable\docs\media\js\jquery.js" />
+    <Content Include="admin\assets\advanced-datatable\docs\media\js\shBrushJScript.js" />
+    <Content Include="admin\assets\advanced-datatable\docs\media\js\shCore.js" />
+    <Content Include="admin\assets\advanced-datatable\examples\advanced_init\column_render.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\advanced_init\complex_header.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\advanced_init\defaults.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\advanced_init\dom_multiple_elements.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\advanced_init\dom_toolbar.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\advanced_init\dt_events.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\advanced_init\events_live.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\advanced_init\events_post_init.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\advanced_init\events_pre_init.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\advanced_init\footer_callback.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\advanced_init\highlight.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\advanced_init\html_sort.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\advanced_init\language_file.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\advanced_init\length_menu.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\advanced_init\localstorage.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\advanced_init\row_callback.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\advanced_init\row_grouping.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\advanced_init\sorting_control.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\ajax\ajax.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\ajax\custom_data_property.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\ajax\deep.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\ajax\defer_render.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\ajax\null_data_source.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\ajax\objects.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\ajax\objects_subarrays.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\ajax\sources\arrays.txt" />
+    <Content Include="admin\assets\advanced-datatable\examples\ajax\sources\arrays_subobjects.txt" />
+    <Content Include="admin\assets\advanced-datatable\examples\ajax\sources\array_only.txt" />
+    <Content Include="admin\assets\advanced-datatable\examples\ajax\sources\custom_prop.txt" />
+    <Content Include="admin\assets\advanced-datatable\examples\ajax\sources\deep.txt" />
+    <Content Include="admin\assets\advanced-datatable\examples\ajax\sources\objects.txt" />
+    <Content Include="admin\assets\advanced-datatable\examples\ajax\sources\objects_subarrays.txt" />
+    <Content Include="admin\assets\advanced-datatable\examples\api\add_row.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\api\api_in_init.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\api\counter_column.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\api\editable.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\api\form.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\api\highlight.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\api\multi_filter.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\api\multi_filter_select.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\api\regex.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\api\row_details.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\api\select_row.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\api\select_single_row.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\api\show_hide.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\api\tabs_and_scrolling.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\basic_init\alt_pagination.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\basic_init\base.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\basic_init\base_themeroller.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\basic_init\complex_header.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\basic_init\dom.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\basic_init\filter_only.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\basic_init\flexible_width.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\basic_init\hidden_columns.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\basic_init\language.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\basic_init\multiple_tables.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\basic_init\multi_col_sort.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\basic_init\scroll_x.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\basic_init\scroll_xy.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\basic_init\scroll_y.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\basic_init\scroll_y_infinite.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\basic_init\scroll_y_theme.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\basic_init\state_save.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\basic_init\table_sorting.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\basic_init\themes.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\basic_init\zero_config.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\data_sources\ajax.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\data_sources\dom.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\data_sources\js_array.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\data_sources\server_side.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\data.sql" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\details_close.png" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\details_open.png" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\de_DE.txt" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\index.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\jquery-ui-tabs.js" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\jquery.jeditable.js" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\jquery.tooltip.css" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\jquery.tooltip.js" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\syntax\css\shCore.css" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\syntax\images\arrow.jpg" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\syntax\images\extended.png" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\syntax\js\shCore.js" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\themes\smoothness\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\themes\smoothness\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\themes\smoothness\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\themes\smoothness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\themes\smoothness\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\themes\smoothness\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\themes\smoothness\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\themes\smoothness\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\themes\smoothness\images\ui-icons_222222_256x240.png" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\themes\smoothness\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\themes\smoothness\images\ui-icons_454545_256x240.png" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\themes\smoothness\images\ui-icons_888888_256x240.png" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\themes\smoothness\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\themes\smoothness\jquery-ui-1.8.4.custom.css" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\themes\ui-lightness\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\themes\ui-lightness\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\themes\ui-lightness\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\themes\ui-lightness\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\themes\ui-lightness\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\themes\ui-lightness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\themes\ui-lightness\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\themes\ui-lightness\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\themes\ui-lightness\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\themes\ui-lightness\images\ui-icons_222222_256x240.png" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\themes\ui-lightness\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\themes\ui-lightness\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\themes\ui-lightness\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\themes\ui-lightness\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\themes\ui-lightness\jquery-ui-1.8.4.custom.css" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\vv.png" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\xx.png" />
+    <Content Include="admin\assets\advanced-datatable\examples\index.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\plug-ins\dom_sort.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\plug-ins\html_sort.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\plug-ins\paging_plugin.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\plug-ins\plugin_api.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\plug-ins\range_filtering.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\plug-ins\sorting_plugin.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\plug-ins\sorting_sType.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\server_side\custom_vars.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\server_side\defer_loading.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\server_side\editable.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\server_side\ids.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\server_side\jsonp.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\server_side\object_data.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\server_side\pipeline.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\server_side\post.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\server_side\row_details.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\server_side\select_rows.html" />
+    <Content Include="admin\assets\advanced-datatable\examples\server_side\server_side.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\AutoFill\callbacks.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\AutoFill\columns.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\AutoFill\index.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\AutoFill\inputs.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\AutoFill\media\css\AutoFill.css" />
+    <Content Include="admin\assets\advanced-datatable\extras\AutoFill\media\docs\02ff627f40.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\AutoFill\media\docs\36456bf45f.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\AutoFill\media\docs\47cac4f141.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\AutoFill\media\docs\5a72546831.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\AutoFill\media\docs\8ee4007a12.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\AutoFill\media\docs\a69b02bcf2.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\AutoFill\media\docs\AutoFill.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\AutoFill\media\docs\b44bd4821a.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\AutoFill\media\docs\c6945fdb4a.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\AutoFill\media\docs\global.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\AutoFill\media\docs\index.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\AutoFill\media\docs\media\css\doc.css" />
+    <Content Include="admin\assets\advanced-datatable\extras\AutoFill\media\docs\media\css\shCore.css" />
+    <Content Include="admin\assets\advanced-datatable\extras\AutoFill\media\docs\media\css\shThemeDataTables.css" />
+    <Content Include="admin\assets\advanced-datatable\extras\AutoFill\media\docs\media\images\arrow.jpg" />
+    <Content Include="admin\assets\advanced-datatable\extras\AutoFill\media\docs\media\images\arrow.png" />
+    <Content Include="admin\assets\advanced-datatable\extras\AutoFill\media\docs\media\images\extended.png" />
+    <Content Include="admin\assets\advanced-datatable\extras\AutoFill\media\docs\media\js\doc.js" />
+    <Content Include="admin\assets\advanced-datatable\extras\AutoFill\media\docs\media\js\jquery.js" />
+    <Content Include="admin\assets\advanced-datatable\extras\AutoFill\media\docs\media\js\shBrushJScript.js" />
+    <Content Include="admin\assets\advanced-datatable\extras\AutoFill\media\docs\media\js\shCore.js" />
+    <Content Include="admin\assets\advanced-datatable\extras\AutoFill\media\images\filler.png" />
+    <Content Include="admin\assets\advanced-datatable\extras\AutoFill\media\js\AutoFill.js" />
+    <Content Include="admin\assets\advanced-datatable\extras\AutoFill\media\js\AutoFill.min.js" />
+    <Content Include="admin\assets\advanced-datatable\extras\AutoFill\scrolling.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColReorder\alt_insert.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColReorder\colvis.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColReorder\col_filter.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColReorder\fixedcolumns.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColReorder\fixedheader.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColReorder\index.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColReorder\media\css\ColReorder.css" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColReorder\media\docs\46848f6f3b.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColReorder\media\docs\4f1246032c.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColReorder\media\docs\a69b02bcf2.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColReorder\media\docs\ColReorder.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColReorder\media\docs\global.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColReorder\media\docs\index.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColReorder\media\docs\media\css\doc.css" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColReorder\media\docs\media\css\shCore.css" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColReorder\media\docs\media\css\shThemeDataTables.css" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColReorder\media\docs\media\images\arrow.jpg" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColReorder\media\docs\media\images\arrow.png" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColReorder\media\docs\media\images\extended.png" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColReorder\media\docs\media\js\doc.js" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColReorder\media\docs\media\js\jquery.js" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColReorder\media\docs\media\js\shBrushJScript.js" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColReorder\media\docs\media\js\shCore.js" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColReorder\media\images\insert.png" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColReorder\media\js\ColReorder.js" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColReorder\media\js\ColReorder.min.js" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColReorder\predefined.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColReorder\reset.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColReorder\scrolling.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColReorder\server_side.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColReorder\state_save.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColReorder\theme.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColVis\exclude_columns.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColVis\index.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColVis\media\css\ColVis.css" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColVis\media\css\ColVisAlt.css" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColVis\media\docs\a69b02bcf2.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColVis\media\docs\ccb5a49865.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColVis\media\docs\ColVis.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColVis\media\docs\global.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColVis\media\docs\index.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColVis\media\docs\media\css\doc.css" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColVis\media\docs\media\css\shCore.css" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColVis\media\docs\media\css\shThemeDataTables.css" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColVis\media\docs\media\images\arrow.jpg" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColVis\media\docs\media\images\arrow.png" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColVis\media\docs\media\images\extended.png" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColVis\media\docs\media\js\doc.js" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColVis\media\docs\media\js\jquery.js" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColVis\media\docs\media\js\shBrushJScript.js" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColVis\media\docs\media\js\shCore.js" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColVis\media\images\button.png" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColVis\media\js\ColVis.js" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColVis\media\js\ColVis.min.js" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColVis\mouseover.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColVis\style.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColVis\text.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColVis\theme.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColVis\title_callback.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColVis\two_tables.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColVis\two_tables_identical.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\col_filter.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\css_size.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\docs\070023b890.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\docs\526f872207.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\docs\73098af57c.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\docs\889588ec06.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\docs\91bce7c4ad.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\docs\a6bd52f587.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\docs\d3890ba7c4.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\docs\e20106c59a.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\docs\FixedColumns.defaults.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\docs\FixedColumns.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\docs\global.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\docs\index.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\docs\media\css\doc.css" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\docs\media\css\shCore.css" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\docs\media\css\shThemeDataTables.css" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\docs\media\images\arrow.jpg" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\docs\media\images\arrow.png" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\docs\media\images\extended.png" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\docs\media\js\doc.js" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\docs\media\js\jquery.js" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\docs\media\js\shBrushJScript.js" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\docs\media\js\shCore.js" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\index.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\index_column.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\left_right_columns.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\media\js\FixedColumns.js" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\media\js\FixedColumns.min.js" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\right_column.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\rowspan.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\row_grouping.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\row_grouping_height.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\scale_fixed.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\scale_relative.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\server-side-processing.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\themed.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\two_columns.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\x_y_scrolling.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedHeader\html_table.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedHeader\index.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedHeader\js\FixedHeader.js" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedHeader\js\FixedHeader.min.js" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedHeader\top_bottom_left_right.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedHeader\top_left.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedHeader\two_tables.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedHeader\zIndexes.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\KeyTable\datatable.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\KeyTable\datatable_scrolling.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\KeyTable\editing.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\KeyTable\form.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\KeyTable\index.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\KeyTable\js\KeyTable.js" />
+    <Content Include="admin\assets\advanced-datatable\extras\KeyTable\js\KeyTable.min.js" />
+    <Content Include="admin\assets\advanced-datatable\extras\Scroller\api_scrolling.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\Scroller\index.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\Scroller\large_js_source.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\Scroller\media\css\dataTables.scroller.css" />
+    <Content Include="admin\assets\advanced-datatable\extras\Scroller\media\data\2500.txt" />
+    <Content Include="admin\assets\advanced-datatable\extras\Scroller\media\docs\baed189d4a.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\Scroller\media\docs\c6053fac6b.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\Scroller\media\docs\index.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\Scroller\media\docs\media\css\doc.css" />
+    <Content Include="admin\assets\advanced-datatable\extras\Scroller\media\docs\media\css\shCore.css" />
+    <Content Include="admin\assets\advanced-datatable\extras\Scroller\media\docs\media\css\shThemeDataTables.css" />
+    <Content Include="admin\assets\advanced-datatable\extras\Scroller\media\docs\media\images\arrow.jpg" />
+    <Content Include="admin\assets\advanced-datatable\extras\Scroller\media\docs\media\images\arrow.png" />
+    <Content Include="admin\assets\advanced-datatable\extras\Scroller\media\docs\media\images\extended.png" />
+    <Content Include="admin\assets\advanced-datatable\extras\Scroller\media\docs\media\js\doc.js" />
+    <Content Include="admin\assets\advanced-datatable\extras\Scroller\media\docs\media\js\jquery.js" />
+    <Content Include="admin\assets\advanced-datatable\extras\Scroller\media\docs\media\js\shBrushJScript.js" />
+    <Content Include="admin\assets\advanced-datatable\extras\Scroller\media\docs\media\js\shCore.js" />
+    <Content Include="admin\assets\advanced-datatable\extras\Scroller\media\docs\Scroller.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\Scroller\media\docs\Scroller.oDefaults.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\Scroller\media\images\loading-background.png" />
+    <Content Include="admin\assets\advanced-datatable\extras\Scroller\media\js\dataTables.scroller.js" />
+    <Content Include="admin\assets\advanced-datatable\extras\Scroller\media\js\dataTables.scroller.min.js" />
+    <Content Include="admin\assets\advanced-datatable\extras\Scroller\server-side_processing.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\Scroller\state_saving.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\alter_buttons.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\alt_init.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\bootstrap.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\button_text.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\collection.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\defaults.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\index.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\media\css\TableTools.css" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\media\css\TableTools_JUI.css" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\media\images\background.png" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\media\images\collection.png" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\media\images\collection_hover.png" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\media\images\copy.png" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\media\images\copy_hover.png" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\media\images\csv.png" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\media\images\csv_hover.png" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\media\images\pdf.png" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\media\images\pdf_hover.png" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\media\images\print.png" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\media\images\print_hover.png" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\media\images\xls.png" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\media\images\xls_hover.png" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\media\js\TableTools.js" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\media\js\TableTools.min.js" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\media\js\ZeroClipboard.js" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\media\swf\copy_csv_xls.swf" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\media\swf\copy_csv_xls_pdf.swf" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\multiple_tables.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\multi_instance.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\pdf_message.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\plug-in.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\select_multi.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\select_single.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\swf_path.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\tabs.html" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\theme.html" />
+    <Content Include="admin\assets\advanced-datatable\license-bsd.txt" />
+    <Content Include="admin\assets\advanced-datatable\license-gpl2.txt" />
+    <Content Include="admin\assets\advanced-datatable\media\css\demo_page.css" />
+    <Content Include="admin\assets\advanced-datatable\media\css\demo_table.css" />
+    <Content Include="admin\assets\advanced-datatable\media\css\demo_table_jui.css" />
+    <Content Include="admin\assets\advanced-datatable\media\css\jquery.dataTables.css" />
+    <Content Include="admin\assets\advanced-datatable\media\css\jquery.dataTables_themeroller.css" />
+    <Content Include="admin\assets\advanced-datatable\media\images\back_disabled.png" />
+    <Content Include="admin\assets\advanced-datatable\media\images\back_enabled.png" />
+    <Content Include="admin\assets\advanced-datatable\media\images\back_enabled_hover.png" />
+    <Content Include="admin\assets\advanced-datatable\media\images\favicon.ico" />
+    <Content Include="admin\assets\advanced-datatable\media\images\forward_disabled.png" />
+    <Content Include="admin\assets\advanced-datatable\media\images\forward_enabled.png" />
+    <Content Include="admin\assets\advanced-datatable\media\images\forward_enabled_hover.png" />
+    <Content Include="admin\assets\advanced-datatable\media\images\sort_asc.png" />
+    <Content Include="admin\assets\advanced-datatable\media\images\sort_asc_disabled.png" />
+    <Content Include="admin\assets\advanced-datatable\media\images\sort_both.png" />
+    <Content Include="admin\assets\advanced-datatable\media\images\sort_desc.png" />
+    <Content Include="admin\assets\advanced-datatable\media\images\sort_desc_disabled.png" />
+    <Content Include="admin\assets\advanced-datatable\media\js\jquery.dataTables.js" />
+    <Content Include="admin\assets\advanced-datatable\media\js\jquery.dataTables.min.js" />
+    <Content Include="admin\assets\advanced-datatable\media\js\jquery.js" />
+    <Content Include="admin\assets\advanced-datatable\media\src\api\api.internal.js" />
+    <Content Include="admin\assets\advanced-datatable\media\src\api\api.methods.js" />
+    <Content Include="admin\assets\advanced-datatable\media\src\api\api.static.js" />
+    <Content Include="admin\assets\advanced-datatable\media\src\core\core.ajax.js" />
+    <Content Include="admin\assets\advanced-datatable\media\src\core\core.columns.js" />
+    <Content Include="admin\assets\advanced-datatable\media\src\core\core.constructor.js" />
+    <Content Include="admin\assets\advanced-datatable\media\src\core\core.data.js" />
+    <Content Include="admin\assets\advanced-datatable\media\src\core\core.draw.js" />
+    <Content Include="admin\assets\advanced-datatable\media\src\core\core.filter.js" />
+    <Content Include="admin\assets\advanced-datatable\media\src\core\core.info.js" />
+    <Content Include="admin\assets\advanced-datatable\media\src\core\core.init.js" />
+    <Content Include="admin\assets\advanced-datatable\media\src\core\core.length.js" />
+    <Content Include="admin\assets\advanced-datatable\media\src\core\core.page.js" />
+    <Content Include="admin\assets\advanced-datatable\media\src\core\core.processing.js" />
+    <Content Include="admin\assets\advanced-datatable\media\src\core\core.scrolling.js" />
+    <Content Include="admin\assets\advanced-datatable\media\src\core\core.sizing.js" />
+    <Content Include="admin\assets\advanced-datatable\media\src\core\core.sort.js" />
+    <Content Include="admin\assets\advanced-datatable\media\src\core\core.state.js" />
+    <Content Include="admin\assets\advanced-datatable\media\src\core\core.support.js" />
+    <Content Include="admin\assets\advanced-datatable\media\src\DataTables.js" />
+    <Content Include="admin\assets\advanced-datatable\media\src\ext\ext.classes.js" />
+    <Content Include="admin\assets\advanced-datatable\media\src\ext\ext.paging.js" />
+    <Content Include="admin\assets\advanced-datatable\media\src\ext\ext.sorting.js" />
+    <Content Include="admin\assets\advanced-datatable\media\src\ext\ext.types.js" />
+    <Content Include="admin\assets\advanced-datatable\media\src\model\model.column.js" />
+    <Content Include="admin\assets\advanced-datatable\media\src\model\model.defaults.columns.js" />
+    <Content Include="admin\assets\advanced-datatable\media\src\model\model.defaults.js" />
+    <Content Include="admin\assets\advanced-datatable\media\src\model\model.ext.js" />
+    <Content Include="admin\assets\advanced-datatable\media\src\model\model.row.js" />
+    <Content Include="admin\assets\advanced-datatable\media\src\model\model.search.js" />
+    <Content Include="admin\assets\advanced-datatable\media\src\model\model.settings.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\controller.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\index.html" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\performance\draw.html" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\performance\page.html" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\performance\sort.html" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests\1_dom\_zero_config.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\-complex_header.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\-iDraw.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\2512.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\2530-2.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\2530.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\2569.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\2600.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\2608.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\2635.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\2746-stable-sort.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\2799.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\2840-restore-table-width.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\2914-state-save-sort.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\5396-fnUpdate-arrays-mData.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\5396-fnUpdate-arrays.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\5508-xscroll-zero-content.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\6776-scrolling-table-grows.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\aaSorting.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\aaSortingFixed.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\aoColumns.bSearchable.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\aoColumns.bSortable.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\aoColumns.bUseRendered.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\aoColumns.bVisible.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\aoColumns.bVisible2.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\aoColumns.fnRender.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\aoColumns.iDataSort.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\aoColumns.sClass.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\aoColumns.sName.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\aoColumns.sTitle.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\aoColumns.sWidth.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\aoSearchCols.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\asStripClasses.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\bAutoWidth.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\bFilter.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\bInfiniteScroll.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\bInfo.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\bJQueryUI.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\bLengthChange.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\bPaginate.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\bProcessing.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\bServerSide.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\bSort.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\bSortCellsTop.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\bSortClasses.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\fnCookieCallback.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\fnCreatedCell.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\fnCreatedRow.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\fnDeleteRow.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\fnDrawCallback.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\fnFilter.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\fnFooterCallback.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\fnHeaderCallback.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\fnInfoCallback.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\fnInitComplete.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\fnRowCallback.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\fnSetColumnVis.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\fnSetColumnVis2.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\html-autodetect-sort.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\iDisplayLength.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\oLanguage.oPaginate.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\oLanguage.sInfo.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\oLanguage.sInfoEmpty.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\oLanguage.sInfoPostFix.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\oLanguage.sLengthMenu.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\oLanguage.sProcessing.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\oLanguage.sSearch.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\oLanguage.sUrl.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\oLanguage.sZeroRecords.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\oSearch.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\sAjaxSource.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\sDom.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\sPaginationType.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\sScrollXY.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\th_in_body.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\_getDataFunctions.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\_setDataFunctions.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\_zero_config.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\39-nested-null.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\6872-default-content-missing-props.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\8549--string-sorting-nonstrings.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\aaSorting.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\aaSortingFixed.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\aoColumns.bSearchable.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\aoColumns.bSortable.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\aoColumns.bUseRendered.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\aoColumns.bVisible.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\aoColumns.fnRender.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\aoColumns.iDataSort.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\aoColumns.sClass.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\aoColumns.sName.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\aoColumns.sTitle.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\aoColumns.sWidth.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\aoSearchCols.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\asStripClasses.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\bAutoWidth.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\bFilter.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\bInfo.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\bLengthChange.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\bPaginate.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\bProcessing.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\bServerSide.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\bSort.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\bSortClasses.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\fnCreatedCell.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\fnCreatedRow.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\fnDrawCallback.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\fnFooterCallback.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\fnHeaderCallback.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\fnInitComplete.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\fnRowCallback.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\iDisplayLength.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\js_data_mixed_types.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\oLanguage.oPaginate.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\oLanguage.sInfo.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\oLanguage.sInfoEmpty.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\oLanguage.sInfoPostFix.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\oLanguage.sLengthMenu.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\oLanguage.sProcessing.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\oLanguage.sSearch.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\oLanguage.sUrl.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\oLanguage.sZeroRecords.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\oSearch.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\sAjaxSource.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\sDom.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\sPaginationType.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\_zero_config.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\aaSorting.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\aaSortingFixed.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\aoColumns.bSearchable.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\aoColumns.bSortable.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\aoColumns.bUseRendered.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\aoColumns.bVisible.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\aoColumns.fnRender.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\aoColumns.iDataSort.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\aoColumns.sClass.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\aoColumns.sName.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\aoColumns.sTitle.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\aoColumns.sWidth.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\aoSearchCols.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\asStripClasses.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\bAutoWidth.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\bFilter.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\bInfo.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\bLengthChange.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\bPaginate.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\bProcessing.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\bServerSide.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\bSort.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\bSortClasses.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\fnCreatedCell.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\fnCreatedRow.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\fnDrawCallback.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\fnHeaderCallback.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\fnInitComplete.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\fnRowCallback.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\fnServerData.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\iDisplayLength.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\oLanguage.oPaginate.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\oLanguage.sInfo.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\oLanguage.sInfoEmpty.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\oLanguage.sInfoPostFix.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\oLanguage.sLengthMenu.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\oLanguage.sLoadingRecords.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\oLanguage.sProcessing.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\oLanguage.sSearch.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\oLanguage.sUrl.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\oLanguage.sZeroRecords.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\oSearch.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\sAjaxDataProp.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\sAjaxDataProp2.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\sAjaxSource.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\sDom.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\sPaginationType.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\_zero_config.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\-iDraw.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\2440.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\2569.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\2600.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\aaSorting.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\aaSortingFixed.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\aoColumns.bSearchable.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\aoColumns.bSortable.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\aoColumns.bUseRendered.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\aoColumns.bVisible.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\aoColumns.fnRender.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\aoColumns.sClass.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\aoColumns.sName.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\aoColumns.sTitle.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\aoColumns.sWidth.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\aoSearchCols.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\asStripClasses.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\bAutoWidth.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\bFilter.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\bInfiniteScroll.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\bInfo.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\bLengthChange.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\bPaginate.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\bProcessing.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\bServerSide.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\bSort.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\bSortClasses.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\fnCreatedCell.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\fnCreatedRow.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\fnDrawCallback.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\fnHeaderCallback.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\fnInitComplete.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\fnRowCallback.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\iDeferLoading.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\iDisplayLength.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\oLanguage.oPaginate.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\oLanguage.sInfo.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\oLanguage.sInfoEmpty.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\oLanguage.sInfoPostFix.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\oLanguage.sLengthMenu.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\oLanguage.sProcessing.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\oLanguage.sSearch.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\oLanguage.sUrl.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\oLanguage.sZeroRecords.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\oSearch.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\sAjaxDataProp.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\sAjaxSource.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\sDom.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\sPaginationType.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\_zero_config.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\aaSorting.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\aaSortingFixed.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\aoColumns.bSearchable.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\aoColumns.bSortable.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\aoColumns.bUseRendered.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\aoColumns.bVisible.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\aoColumns.fnRender.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\aoColumns.iDataSort.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\aoColumns.sClass.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\aoColumns.sName.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\aoColumns.sTitle.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\aoColumns.sWidth.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\aoSearchCols.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\asStripClasses.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\bAutoWidth.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\bFilter.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\bInfo.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\bLengthChange.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\bPaginate.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\bProcessing.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\bServerSide.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\bSort.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\bSortClasses.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\fnDrawCallback.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\fnHeaderCallback.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\fnInitComplete.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\fnRowCallback.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\fnServerData.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\iDisplayLength.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\oLanguage.oPaginate.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\oLanguage.sInfo.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\oLanguage.sInfoEmpty.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\oLanguage.sInfoPostFix.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\oLanguage.sLengthMenu.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\oLanguage.sProcessing.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\oLanguage.sSearch.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\oLanguage.sUrl.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\oLanguage.sZeroRecords.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\oSearch.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\sAjaxSource.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\sDom.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\sPaginationType.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\_zero_config.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\_zero_config_arrays_subobjects.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\_zero_config_deep.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\_zero_config_mDataProp.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\_zero_config_null_source.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\_zero_config_objects.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\_zero_config_objects_subarrays.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\aaSorting.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\aaSortingFixed.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\aoColumns.bSearchable.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\aoColumns.bSortable.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\aoColumns.bUseRendered.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\aoColumns.bVisible.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\aoColumns.fnRender.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\aoColumns.iDataSort.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\aoColumns.sClass.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\aoColumns.sName.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\aoColumns.sTitle.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\aoColumns.sWidth.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\aoSearchCols.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\asStripClasses.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\bAutoWidth.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\bFilter.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\bInfo.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\bLengthChange.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\bPaginate.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\bProcessing.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\bServerSide.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\bSort.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\bSortClasses.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\fnDrawCallback.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\fnHeaderCallback.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\fnInitComplete.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\fnRowCallback.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\fnServerData.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\iDisplayLength.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\oLanguage.oPaginate.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\oLanguage.sInfo.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\oLanguage.sInfoEmpty.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\oLanguage.sInfoPostFix.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\oLanguage.sLengthMenu.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\oLanguage.sProcessing.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\oLanguage.sSearch.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\oLanguage.sUrl.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\oLanguage.sZeroRecords.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\oSearch.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\sAjaxDataProp.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\sAjaxDataProp2.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\sAjaxSource.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\sDom.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\sPaginationType.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\_zero_config.js" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\unit_test.js" />
+    <Content Include="admin\assets\advanced-datatable\Readme.txt" />
+    <Content Include="admin\assets\bootstrap-colorpicker\css\colorpicker.css" />
+    <Content Include="admin\assets\bootstrap-colorpicker\img\alpha.png" />
+    <Content Include="admin\assets\bootstrap-colorpicker\img\hue.png" />
+    <Content Include="admin\assets\bootstrap-colorpicker\img\saturation.png" />
+    <Content Include="admin\assets\bootstrap-colorpicker\js\bootstrap-colorpicker.js" />
+    <Content Include="admin\assets\bootstrap-datepicker\css\datepicker.css" />
+    <Content Include="admin\assets\bootstrap-datepicker\js\bootstrap-datepicker.js" />
+    <Content Include="admin\assets\bootstrap-daterangepicker\date.js" />
+    <Content Include="admin\assets\bootstrap-daterangepicker\daterangepicker-bs3.css" />
+    <Content Include="admin\assets\bootstrap-daterangepicker\daterangepicker.css" />
+    <Content Include="admin\assets\bootstrap-daterangepicker\daterangepicker.js" />
+    <Content Include="admin\assets\bootstrap-daterangepicker\examples.html" />
+    <Content Include="admin\assets\bootstrap-daterangepicker\moment.js" />
+    <Content Include="admin\assets\bootstrap-daterangepicker\moment.min.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\css\datetimepicker.css" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\bootstrap-datetimepicker.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\bootstrap-datetimepicker.min.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.bg.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.ca.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.cs.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.da.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.de.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.el.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.es.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.fi.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.fr.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.he.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.hr.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.hu.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.id.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.is.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.it.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.ja.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.kr.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.lt.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.lv.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.ms.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.nb.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.nl.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.pl.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.pt-BR.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.pt.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.ro.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.rs-latin.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.rs.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.ru.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.sk.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.sl.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.sv.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.sw.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.th.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.tr.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.ua.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.uk.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.zh-CN.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.zh-TW.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\sample\bootstrap\css\bootstrap.css" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\sample\bootstrap\css\bootstrap.min.css" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\sample\bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\sample\bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\sample\bootstrap\js\bootstrap.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\sample\bootstrap\js\bootstrap.min.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\sample\index.html" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\sample\jquery\jquery-1.8.3.min.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\screenshot\standard_day.png" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\screenshot\standard_day_meridian.png" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\screenshot\standard_decade.png" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\screenshot\standard_full.png" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\screenshot\standard_hour.png" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\screenshot\standard_hour_meridian.png" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\screenshot\standard_month.png" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\screenshot\standard_year.png" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\tests\assets\coverage.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\tests\assets\jquery-1.7.1.min.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\tests\assets\mock.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\tests\assets\qunit-logging.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\tests\assets\qunit.css" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\tests\assets\qunit.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\tests\assets\utils.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\tests\run-qunit.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\tests\suites\component.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\tests\suites\events.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\tests\suites\formats.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\tests\suites\inline.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\tests\suites\keyboard_navigation\2011.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\tests\suites\keyboard_navigation\2012.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\tests\suites\keyboard_navigation\all.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\tests\suites\mouse_navigation\2011.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\tests\suites\mouse_navigation\2012.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\tests\suites\mouse_navigation\all.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\tests\suites\options.js" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\tests\tests.html" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\tests\tests.min.html" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\tests\_coverage.html" />
+    <Content Include="admin\assets\bootstrap-fileupload\bootstrap-fileupload.css" />
+    <Content Include="admin\assets\bootstrap-fileupload\bootstrap-fileupload.js" />
+    <Content Include="admin\assets\bootstrap-inputmask\bootstrap-inputmask.js" />
+    <Content Include="admin\assets\bootstrap-inputmask\bootstrap-inputmask.min.js" />
+    <Content Include="admin\assets\bootstrap-switch\examples\index.html" />
+    <Content Include="admin\assets\bootstrap-switch\static\js\bootstrap-switch.js" />
+    <Content Include="admin\assets\bootstrap-switch\static\js\bootstrap-switch.min.js" />
+    <Content Include="admin\assets\bootstrap-switch\static\stylesheets\bootstrap-switch-conquer.css" />
+    <Content Include="admin\assets\bootstrap-switch\static\stylesheets\bootstrap-switch.css" />
+    <Content Include="admin\assets\bootstrap-switch\static\stylesheets\flat-ui-fonts.css" />
+    <Content Include="admin\assets\bootstrap-timepicker\compiled\timepicker.css" />
+    <Content Include="admin\assets\bootstrap-timepicker\js\bootstrap-timepicker.js" />
+    <Content Include="admin\assets\bootstrap-wysihtml5\bootstrap-wysihtml5.css" />
+    <Content Include="admin\assets\bootstrap-wysihtml5\bootstrap-wysihtml5.js" />
+    <Content Include="admin\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.ar-AR.js" />
+    <Content Include="admin\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.bg-BG.js" />
+    <Content Include="admin\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.ca-CT.js" />
+    <Content Include="admin\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.cs-CZ.js" />
+    <Content Include="admin\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.da-DK.js" />
+    <Content Include="admin\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.de-DE.js" />
+    <Content Include="admin\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.el-GR.js" />
+    <Content Include="admin\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.es-AR.js" />
+    <Content Include="admin\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.es-ES.js" />
+    <Content Include="admin\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.fr-FR.js" />
+    <Content Include="admin\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.hr-HR.js" />
+    <Content Include="admin\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.it-IT.js" />
+    <Content Include="admin\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.ja-JP.js" />
+    <Content Include="admin\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.ko-KR.js" />
+    <Content Include="admin\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.lt-LT.js" />
+    <Content Include="admin\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.mo-MD.js" />
+    <Content Include="admin\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.nb-NB.js" />
+    <Content Include="admin\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.nl-NL.js" />
+    <Content Include="admin\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.pl-PL.js" />
+    <Content Include="admin\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.pt-BR.js" />
+    <Content Include="admin\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.ru-RU.js" />
+    <Content Include="admin\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.sk-SK.js" />
+    <Content Include="admin\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.sv-SE.js" />
+    <Content Include="admin\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.tr-TR.js" />
+    <Content Include="admin\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.ua-UA.js" />
+    <Content Include="admin\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.zh-CN.js" />
+    <Content Include="admin\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.zh-TW.js" />
+    <Content Include="admin\assets\bootstrap-wysihtml5\wysihtml5-0.3.0.js" />
+    <Content Include="admin\assets\bootstrap-wysihtml5\wysiwyg-color.css" />
+    <Content Include="admin\assets\chart-master\Chart.js" />
+    <Content Include="admin\assets\chart-master\Chart.min.js" />
+    <Content Include="admin\assets\chart-master\docs\Chart.js" />
+    <Content Include="admin\assets\chart-master\docs\index.html" />
+    <Content Include="admin\assets\chart-master\docs\prettify.css" />
+    <Content Include="admin\assets\chart-master\docs\prettify.js" />
+    <Content Include="admin\assets\chart-master\docs\styles.css" />
+    <Content Include="admin\assets\chart-master\samples\bar.html" />
+    <Content Include="admin\assets\chart-master\samples\doughnut.html" />
+    <Content Include="admin\assets\chart-master\samples\line.html" />
+    <Content Include="admin\assets\chart-master\samples\pie.html" />
+    <Content Include="admin\assets\chart-master\samples\polarArea.html" />
+    <Content Include="admin\assets\chart-master\samples\radar.html" />
+    <Content Include="admin\assets\chart-master\samples\sixup.html" />
+    <Content Include="admin\assets\chart-master\site\assets\6charts.png" />
+    <Content Include="admin\assets\chart-master\site\assets\Chart.js" />
+    <Content Include="admin\assets\chart-master\site\assets\effects.js" />
+    <Content Include="admin\assets\chart-master\site\assets\excanvas.js" />
+    <Content Include="admin\assets\chart-master\site\assets\html.png" />
+    <Content Include="admin\assets\chart-master\site\assets\simple.png" />
+    <Content Include="admin\assets\chart-master\site\index.html" />
+    <Content Include="admin\assets\chart-master\site\styles.css" />
+    <Content Include="admin\assets\ckeditor\build-config.js" />
+    <Content Include="admin\assets\ckeditor\ckeditor.js" />
+    <Content Include="admin\assets\ckeditor\config.js" />
+    <Content Include="admin\assets\ckeditor\contents.css" />
+    <Content Include="admin\assets\ckeditor\lang\af.js" />
+    <Content Include="admin\assets\ckeditor\lang\ar.js" />
+    <Content Include="admin\assets\ckeditor\lang\bg.js" />
+    <Content Include="admin\assets\ckeditor\lang\bn.js" />
+    <Content Include="admin\assets\ckeditor\lang\bs.js" />
+    <Content Include="admin\assets\ckeditor\lang\ca.js" />
+    <Content Include="admin\assets\ckeditor\lang\cs.js" />
+    <Content Include="admin\assets\ckeditor\lang\cy.js" />
+    <Content Include="admin\assets\ckeditor\lang\da.js" />
+    <Content Include="admin\assets\ckeditor\lang\de.js" />
+    <Content Include="admin\assets\ckeditor\lang\el.js" />
+    <Content Include="admin\assets\ckeditor\lang\en-au.js" />
+    <Content Include="admin\assets\ckeditor\lang\en-ca.js" />
+    <Content Include="admin\assets\ckeditor\lang\en-gb.js" />
+    <Content Include="admin\assets\ckeditor\lang\en.js" />
+    <Content Include="admin\assets\ckeditor\lang\eo.js" />
+    <Content Include="admin\assets\ckeditor\lang\es.js" />
+    <Content Include="admin\assets\ckeditor\lang\et.js" />
+    <Content Include="admin\assets\ckeditor\lang\eu.js" />
+    <Content Include="admin\assets\ckeditor\lang\fa.js" />
+    <Content Include="admin\assets\ckeditor\lang\fi.js" />
+    <Content Include="admin\assets\ckeditor\lang\fo.js" />
+    <Content Include="admin\assets\ckeditor\lang\fr-ca.js" />
+    <Content Include="admin\assets\ckeditor\lang\fr.js" />
+    <Content Include="admin\assets\ckeditor\lang\gl.js" />
+    <Content Include="admin\assets\ckeditor\lang\gu.js" />
+    <Content Include="admin\assets\ckeditor\lang\he.js" />
+    <Content Include="admin\assets\ckeditor\lang\hi.js" />
+    <Content Include="admin\assets\ckeditor\lang\hr.js" />
+    <Content Include="admin\assets\ckeditor\lang\hu.js" />
+    <Content Include="admin\assets\ckeditor\lang\is.js" />
+    <Content Include="admin\assets\ckeditor\lang\it.js" />
+    <Content Include="admin\assets\ckeditor\lang\ja.js" />
+    <Content Include="admin\assets\ckeditor\lang\ka.js" />
+    <Content Include="admin\assets\ckeditor\lang\km.js" />
+    <Content Include="admin\assets\ckeditor\lang\ko.js" />
+    <Content Include="admin\assets\ckeditor\lang\ku.js" />
+    <Content Include="admin\assets\ckeditor\lang\lt.js" />
+    <Content Include="admin\assets\ckeditor\lang\lv.js" />
+    <Content Include="admin\assets\ckeditor\lang\mk.js" />
+    <Content Include="admin\assets\ckeditor\lang\mn.js" />
+    <Content Include="admin\assets\ckeditor\lang\ms.js" />
+    <Content Include="admin\assets\ckeditor\lang\nb.js" />
+    <Content Include="admin\assets\ckeditor\lang\nl.js" />
+    <Content Include="admin\assets\ckeditor\lang\no.js" />
+    <Content Include="admin\assets\ckeditor\lang\pl.js" />
+    <Content Include="admin\assets\ckeditor\lang\pt-br.js" />
+    <Content Include="admin\assets\ckeditor\lang\pt.js" />
+    <Content Include="admin\assets\ckeditor\lang\ro.js" />
+    <Content Include="admin\assets\ckeditor\lang\ru.js" />
+    <Content Include="admin\assets\ckeditor\lang\sk.js" />
+    <Content Include="admin\assets\ckeditor\lang\sl.js" />
+    <Content Include="admin\assets\ckeditor\lang\sr-latn.js" />
+    <Content Include="admin\assets\ckeditor\lang\sr.js" />
+    <Content Include="admin\assets\ckeditor\lang\sv.js" />
+    <Content Include="admin\assets\ckeditor\lang\th.js" />
+    <Content Include="admin\assets\ckeditor\lang\tr.js" />
+    <Content Include="admin\assets\ckeditor\lang\ug.js" />
+    <Content Include="admin\assets\ckeditor\lang\uk.js" />
+    <Content Include="admin\assets\ckeditor\lang\vi.js" />
+    <Content Include="admin\assets\ckeditor\lang\zh-cn.js" />
+    <Content Include="admin\assets\ckeditor\lang\zh.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\a11yhelp.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ar.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\bg.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ca.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\cs.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\cy.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\da.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\de.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\el.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\en.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\eo.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\es.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\et.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\fa.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\fi.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\fr.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\gu.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\he.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\hi.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\hr.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\hu.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\it.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ja.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ku.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\lt.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\lv.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\mk.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\mn.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\nb.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\nl.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\no.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\pl.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\pt-br.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\pt.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ro.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ru.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\sk.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\sl.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\sv.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\tr.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ug.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\uk.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\vi.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\zh-cn.js" />
+    <Content Include="admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\_translationstatus.txt" />
+    <Content Include="admin\assets\ckeditor\plugins\about\dialogs\about.js" />
+    <Content Include="admin\assets\ckeditor\plugins\about\dialogs\logo_ckeditor.png" />
+    <Content Include="admin\assets\ckeditor\plugins\clipboard\dialogs\paste.js" />
+    <Content Include="admin\assets\ckeditor\plugins\dialog\dialogDefinition.js" />
+    <Content Include="admin\assets\ckeditor\plugins\fakeobjects\images\spacer.gif" />
+    <Content Include="admin\assets\ckeditor\plugins\icons.png" />
+    <Content Include="admin\assets\ckeditor\plugins\image\dialogs\image.js" />
+    <Content Include="admin\assets\ckeditor\plugins\image\images\noimage.png" />
+    <Content Include="admin\assets\ckeditor\plugins\link\dialogs\anchor.js" />
+    <Content Include="admin\assets\ckeditor\plugins\link\dialogs\link.js" />
+    <Content Include="admin\assets\ckeditor\plugins\link\images\anchor.png" />
+    <Content Include="admin\assets\ckeditor\plugins\magicline\images\icon.png" />
+    <Content Include="admin\assets\ckeditor\plugins\pastefromword\filter\default.js" />
+    <Content Include="admin\assets\ckeditor\plugins\scayt\dialogs\options.js" />
+    <Content Include="admin\assets\ckeditor\plugins\scayt\dialogs\toolbar.css" />
+    <Content Include="admin\assets\ckeditor\plugins\specialchar\dialogs\lang\ca.js" />
+    <Content Include="admin\assets\ckeditor\plugins\specialchar\dialogs\lang\cs.js" />
+    <Content Include="admin\assets\ckeditor\plugins\specialchar\dialogs\lang\cy.js" />
+    <Content Include="admin\assets\ckeditor\plugins\specialchar\dialogs\lang\de.js" />
+    <Content Include="admin\assets\ckeditor\plugins\specialchar\dialogs\lang\el.js" />
+    <Content Include="admin\assets\ckeditor\plugins\specialchar\dialogs\lang\en.js" />
+    <Content Include="admin\assets\ckeditor\plugins\specialchar\dialogs\lang\eo.js" />
+    <Content Include="admin\assets\ckeditor\plugins\specialchar\dialogs\lang\et.js" />
+    <Content Include="admin\assets\ckeditor\plugins\specialchar\dialogs\lang\fa.js" />
+    <Content Include="admin\assets\ckeditor\plugins\specialchar\dialogs\lang\fi.js" />
+    <Content Include="admin\assets\ckeditor\plugins\specialchar\dialogs\lang\fr.js" />
+    <Content Include="admin\assets\ckeditor\plugins\specialchar\dialogs\lang\he.js" />
+    <Content Include="admin\assets\ckeditor\plugins\specialchar\dialogs\lang\hr.js" />
+    <Content Include="admin\assets\ckeditor\plugins\specialchar\dialogs\lang\it.js" />
+    <Content Include="admin\assets\ckeditor\plugins\specialchar\dialogs\lang\ku.js" />
+    <Content Include="admin\assets\ckeditor\plugins\specialchar\dialogs\lang\lv.js" />
+    <Content Include="admin\assets\ckeditor\plugins\specialchar\dialogs\lang\nb.js" />
+    <Content Include="admin\assets\ckeditor\plugins\specialchar\dialogs\lang\nl.js" />
+    <Content Include="admin\assets\ckeditor\plugins\specialchar\dialogs\lang\no.js" />
+    <Content Include="admin\assets\ckeditor\plugins\specialchar\dialogs\lang\pt-br.js" />
+    <Content Include="admin\assets\ckeditor\plugins\specialchar\dialogs\lang\sk.js" />
+    <Content Include="admin\assets\ckeditor\plugins\specialchar\dialogs\lang\sv.js" />
+    <Content Include="admin\assets\ckeditor\plugins\specialchar\dialogs\lang\tr.js" />
+    <Content Include="admin\assets\ckeditor\plugins\specialchar\dialogs\lang\ug.js" />
+    <Content Include="admin\assets\ckeditor\plugins\specialchar\dialogs\lang\zh-cn.js" />
+    <Content Include="admin\assets\ckeditor\plugins\specialchar\dialogs\lang\_translationstatus.txt" />
+    <Content Include="admin\assets\ckeditor\plugins\specialchar\dialogs\specialchar.js" />
+    <Content Include="admin\assets\ckeditor\plugins\tabletools\dialogs\tableCell.js" />
+    <Content Include="admin\assets\ckeditor\plugins\table\dialogs\table.js" />
+    <Content Include="admin\assets\ckeditor\plugins\wsc\dialogs\ciframe.html" />
+    <Content Include="admin\assets\ckeditor\plugins\wsc\dialogs\tmpFrameset.html" />
+    <Content Include="admin\assets\ckeditor\plugins\wsc\dialogs\wsc.css" />
+    <Content Include="admin\assets\ckeditor\plugins\wsc\dialogs\wsc.js" />
+    <Content Include="admin\assets\ckeditor\samples\ajax.html" />
+    <Content Include="admin\assets\ckeditor\samples\api.html" />
+    <Content Include="admin\assets\ckeditor\samples\appendto.html" />
+    <Content Include="admin\assets\ckeditor\samples\assets\inlineall\logo.png" />
+    <Content Include="admin\assets\ckeditor\samples\assets\outputxhtml\outputxhtml.css" />
+    <Content Include="admin\assets\ckeditor\samples\assets\sample.css" />
+    <Content Include="admin\assets\ckeditor\samples\assets\sample.jpg" />
+    <Content Include="admin\assets\ckeditor\samples\assets\uilanguages\languages.js" />
+    <Content Include="admin\assets\ckeditor\samples\divreplace.html" />
+    <Content Include="admin\assets\ckeditor\samples\index.html" />
+    <Content Include="admin\assets\ckeditor\samples\inlineall.html" />
+    <Content Include="admin\assets\ckeditor\samples\inlinebycode.html" />
+    <Content Include="admin\assets\ckeditor\samples\plugins\dialog\assets\my_dialog.js" />
+    <Content Include="admin\assets\ckeditor\samples\plugins\dialog\dialog.html" />
+    <Content Include="admin\assets\ckeditor\samples\plugins\enterkey\enterkey.html" />
+    <Content Include="admin\assets\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.swf" />
+    <Content Include="admin\assets\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\swfobject.js" />
+    <Content Include="admin\assets\ckeditor\samples\plugins\htmlwriter\outputforflash.html" />
+    <Content Include="admin\assets\ckeditor\samples\plugins\htmlwriter\outputhtml.html" />
+    <Content Include="admin\assets\ckeditor\samples\plugins\magicline\magicline.html" />
+    <Content Include="admin\assets\ckeditor\samples\plugins\toolbar\toolbar.html" />
+    <Content Include="admin\assets\ckeditor\samples\plugins\wysiwygarea\fullpage.html" />
+    <Content Include="admin\assets\ckeditor\samples\readonly.html" />
+    <Content Include="admin\assets\ckeditor\samples\replacebyclass.html" />
+    <Content Include="admin\assets\ckeditor\samples\replacebycode.html" />
+    <Content Include="admin\assets\ckeditor\samples\sample.css" />
+    <Content Include="admin\assets\ckeditor\samples\sample.js" />
+    <Content Include="admin\assets\ckeditor\samples\tabindex.html" />
+    <Content Include="admin\assets\ckeditor\samples\uicolor.html" />
+    <Content Include="admin\assets\ckeditor\samples\uilanguages.html" />
+    <Content Include="admin\assets\ckeditor\samples\xhtmlstyle.html" />
+    <Content Include="admin\assets\ckeditor\skins\moono\dialog.css" />
+    <Content Include="admin\assets\ckeditor\skins\moono\dialog_ie.css" />
+    <Content Include="admin\assets\ckeditor\skins\moono\dialog_ie7.css" />
+    <Content Include="admin\assets\ckeditor\skins\moono\dialog_ie8.css" />
+    <Content Include="admin\assets\ckeditor\skins\moono\dialog_iequirks.css" />
+    <Content Include="admin\assets\ckeditor\skins\moono\dialog_opera.css" />
+    <Content Include="admin\assets\ckeditor\skins\moono\editor.css" />
+    <Content Include="admin\assets\ckeditor\skins\moono\editor_gecko.css" />
+    <Content Include="admin\assets\ckeditor\skins\moono\editor_ie.css" />
+    <Content Include="admin\assets\ckeditor\skins\moono\editor_ie7.css" />
+    <Content Include="admin\assets\ckeditor\skins\moono\editor_ie8.css" />
+    <Content Include="admin\assets\ckeditor\skins\moono\editor_iequirks.css" />
+    <Content Include="admin\assets\ckeditor\skins\moono\icons.png" />
+    <Content Include="admin\assets\ckeditor\skins\moono\images\arrow.png" />
+    <Content Include="admin\assets\ckeditor\skins\moono\images\close.png" />
+    <Content Include="admin\assets\ckeditor\skins\moono\images\mini.png" />
+    <Content Include="admin\assets\ckeditor\styles.js" />
+    <Content Include="admin\assets\data-tables\DT_bootstrap.css" />
+    <Content Include="admin\assets\data-tables\DT_bootstrap.js" />
+    <Content Include="admin\assets\data-tables\images\sort_asc.png" />
+    <Content Include="admin\assets\data-tables\images\sort_both.png" />
+    <Content Include="admin\assets\data-tables\images\sort_desc.png" />
+    <Content Include="admin\assets\data-tables\jquery.dataTables.js" />
+    <Content Include="admin\assets\dropzone\css\basic.css" />
+    <Content Include="admin\assets\dropzone\css\dropzone.css" />
+    <Content Include="admin\assets\dropzone\dropzone-amd-module.js" />
+    <Content Include="admin\assets\dropzone\dropzone.js" />
+    <Content Include="admin\assets\dropzone\images\spritemap%402x.png" />
+    <Content Include="admin\assets\dropzone\images\spritemap.png" />
+    <Content Include="admin\assets\fancybox\CHANGELOG.txt" />
+    <Content Include="admin\assets\fancybox\demo\1_b.jpg" />
+    <Content Include="admin\assets\fancybox\demo\1_s.jpg" />
+    <Content Include="admin\assets\fancybox\demo\2_b.jpg" />
+    <Content Include="admin\assets\fancybox\demo\2_s.jpg" />
+    <Content Include="admin\assets\fancybox\demo\3_b.jpg" />
+    <Content Include="admin\assets\fancybox\demo\3_s.jpg" />
+    <Content Include="admin\assets\fancybox\demo\4_b.jpg" />
+    <Content Include="admin\assets\fancybox\demo\4_s.jpg" />
+    <Content Include="admin\assets\fancybox\demo\5_b.jpg" />
+    <Content Include="admin\assets\fancybox\demo\5_s.jpg" />
+    <Content Include="admin\assets\fancybox\demo\ajax.txt" />
+    <Content Include="admin\assets\fancybox\demo\iframe.html" />
+    <Content Include="admin\assets\fancybox\demo\index.html" />
+    <Content Include="admin\assets\fancybox\lib\jquery-1.8.2.min.js" />
+    <Content Include="admin\assets\fancybox\lib\jquery.mousewheel-3.0.6.pack.js" />
+    <Content Include="admin\assets\fancybox\README.txt" />
+    <Content Include="admin\assets\fancybox\source\blank.gif" />
+    <Content Include="admin\assets\fancybox\source\fancybox_loading.gif" />
+    <Content Include="admin\assets\fancybox\source\fancybox_overlay.png" />
+    <Content Include="admin\assets\fancybox\source\fancybox_sprite.png" />
+    <Content Include="admin\assets\fancybox\source\helpers\fancybox_buttons.png" />
+    <Content Include="admin\assets\fancybox\source\helpers\jquery.fancybox-buttons.css" />
+    <Content Include="admin\assets\fancybox\source\helpers\jquery.fancybox-buttons.js" />
+    <Content Include="admin\assets\fancybox\source\helpers\jquery.fancybox-media.js" />
+    <Content Include="admin\assets\fancybox\source\helpers\jquery.fancybox-thumbs.css" />
+    <Content Include="admin\assets\fancybox\source\helpers\jquery.fancybox-thumbs.js" />
+    <Content Include="admin\assets\fancybox\source\jquery.fancybox.css" />
+    <Content Include="admin\assets\fancybox\source\jquery.fancybox.js" />
+    <Content Include="admin\assets\fancybox\source\jquery.fancybox.pack.js" />
+    <Content Include="admin\assets\file-uploader\angularjs.html" />
+    <Content Include="admin\assets\file-uploader\basic-plus.html" />
+    <Content Include="admin\assets\file-uploader\basic.html" />
+    <Content Include="admin\assets\file-uploader\cors\postmessage.html" />
+    <Content Include="admin\assets\file-uploader\cors\result.html" />
+    <Content Include="admin\assets\file-uploader\css\demo-ie8.css" />
+    <Content Include="admin\assets\file-uploader\css\demo.css" />
+    <Content Include="admin\assets\file-uploader\css\jquery.fileupload-noscript.css" />
+    <Content Include="admin\assets\file-uploader\css\jquery.fileupload-ui-noscript.css" />
+    <Content Include="admin\assets\file-uploader\css\jquery.fileupload-ui.css" />
+    <Content Include="admin\assets\file-uploader\css\jquery.fileupload.css" />
+    <Content Include="admin\assets\file-uploader\css\style.css" />
+    <Content Include="admin\assets\file-uploader\Gruntfile.js" />
+    <Content Include="admin\assets\file-uploader\img\loading.gif" />
+    <Content Include="admin\assets\file-uploader\img\progressbar.gif" />
+    <Content Include="admin\assets\file-uploader\index.html" />
+    <Content Include="admin\assets\file-uploader\jquery-ui.html" />
+    <Content Include="admin\assets\file-uploader\js\app.js" />
+    <Content Include="admin\assets\file-uploader\js\cors\jquery.postmessage-transport.js" />
+    <Content Include="admin\assets\file-uploader\js\cors\jquery.xdr-transport.js" />
+    <Content Include="admin\assets\file-uploader\js\jquery.fileupload-angular.js" />
+    <Content Include="admin\assets\file-uploader\js\jquery.fileupload-audio.js" />
+    <Content Include="admin\assets\file-uploader\js\jquery.fileupload-image.js" />
+    <Content Include="admin\assets\file-uploader\js\jquery.fileupload-jquery-ui.js" />
+    <Content Include="admin\assets\file-uploader\js\jquery.fileupload-process.js" />
+    <Content Include="admin\assets\file-uploader\js\jquery.fileupload-ui.js" />
+    <Content Include="admin\assets\file-uploader\js\jquery.fileupload-validate.js" />
+    <Content Include="admin\assets\file-uploader\js\jquery.fileupload-video.js" />
+    <Content Include="admin\assets\file-uploader\js\jquery.fileupload.js" />
+    <Content Include="admin\assets\file-uploader\js\jquery.iframe-transport.js" />
+    <Content Include="admin\assets\file-uploader\js\main.js" />
+    <Content Include="admin\assets\file-uploader\js\vendor\jquery.ui.widget.js" />
+    <Content Include="admin\assets\file-uploader\server\gae-go\static\favicon.ico" />
+    <Content Include="admin\assets\file-uploader\server\gae-go\static\robots.txt" />
+    <Content Include="admin\assets\file-uploader\server\gae-python\static\favicon.ico" />
+    <Content Include="admin\assets\file-uploader\server\gae-python\static\robots.txt" />
+    <Content Include="admin\assets\file-uploader\server\node\server.js" />
+    <Content Include="admin\assets\file-uploader\test\index.html" />
+    <Content Include="admin\assets\file-uploader\test\test.js" />
+    <Content Include="admin\assets\flot\API.txt" />
+    <Content Include="admin\assets\flot\examples\ajax.html" />
+    <Content Include="admin\assets\flot\examples\annotating.html" />
+    <Content Include="admin\assets\flot\examples\arrow-down.gif" />
+    <Content Include="admin\assets\flot\examples\arrow-left.gif" />
+    <Content Include="admin\assets\flot\examples\arrow-right.gif" />
+    <Content Include="admin\assets\flot\examples\arrow-up.gif" />
+    <Content Include="admin\assets\flot\examples\basic.html" />
+    <Content Include="admin\assets\flot\examples\graph-types.html" />
+    <Content Include="admin\assets\flot\examples\hs-2004-27-a-large_web.jpg" />
+    <Content Include="admin\assets\flot\examples\image.html" />
+    <Content Include="admin\assets\flot\examples\index.html" />
+    <Content Include="admin\assets\flot\examples\interacting-axes.html" />
+    <Content Include="admin\assets\flot\examples\interacting.html" />
+    <Content Include="admin\assets\flot\examples\layout.css" />
+    <Content Include="admin\assets\flot\examples\multiple-axes.html" />
+    <Content Include="admin\assets\flot\examples\navigate.html" />
+    <Content Include="admin\assets\flot\examples\percentiles.html" />
+    <Content Include="admin\assets\flot\examples\pie.html" />
+    <Content Include="admin\assets\flot\examples\realtime.html" />
+    <Content Include="admin\assets\flot\examples\resize.html" />
+    <Content Include="admin\assets\flot\examples\selection.html" />
+    <Content Include="admin\assets\flot\examples\setting-options.html" />
+    <Content Include="admin\assets\flot\examples\stacking.html" />
+    <Content Include="admin\assets\flot\examples\symbols.html" />
+    <Content Include="admin\assets\flot\examples\thresholding.html" />
+    <Content Include="admin\assets\flot\examples\time.html" />
+    <Content Include="admin\assets\flot\examples\tracking.html" />
+    <Content Include="admin\assets\flot\examples\turning-series.html" />
+    <Content Include="admin\assets\flot\examples\visitors.html" />
+    <Content Include="admin\assets\flot\examples\zooming.html" />
+    <Content Include="admin\assets\flot\excanvas.js" />
+    <Content Include="admin\assets\flot\excanvas.min.js" />
+    <Content Include="admin\assets\flot\FAQ.txt" />
+    <Content Include="admin\assets\flot\jquery.colorhelpers.js" />
+    <Content Include="admin\assets\flot\jquery.flot.crosshair.js" />
+    <Content Include="admin\assets\flot\jquery.flot.fillbetween.js" />
+    <Content Include="admin\assets\flot\jquery.flot.image.js" />
+    <Content Include="admin\assets\flot\jquery.flot.js" />
+    <Content Include="admin\assets\flot\jquery.flot.navigate.js" />
+    <Content Include="admin\assets\flot\jquery.flot.pie.js" />
+    <Content Include="admin\assets\flot\jquery.flot.resize.js" />
+    <Content Include="admin\assets\flot\jquery.flot.selection.js" />
+    <Content Include="admin\assets\flot\jquery.flot.stack.js" />
+    <Content Include="admin\assets\flot\jquery.flot.symbol.js" />
+    <Content Include="admin\assets\flot\jquery.flot.threshold.js" />
+    <Content Include="admin\assets\flot\jquery.js" />
+    <Content Include="admin\assets\flot\LICENSE.txt" />
+    <Content Include="admin\assets\flot\NEWS.txt" />
+    <Content Include="admin\assets\flot\PLUGINS.txt" />
+    <Content Include="admin\assets\flot\README.txt" />
+    <Content Include="admin\assets\font-awesome\css\font-awesome.css" />
+    <Content Include="admin\assets\font-awesome\css\font-awesome.min.css" />
+    <Content Include="admin\assets\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="admin\assets\fuelux\css\tree-style.css" />
+    <Content Include="admin\assets\fuelux\css\tree.css" />
+    <Content Include="admin\assets\fuelux\img\tree-icons.png" />
+    <Content Include="admin\assets\fuelux\js\spinner.js" />
+    <Content Include="admin\assets\fuelux\js\spinner.min.js" />
+    <Content Include="admin\assets\fuelux\js\tree.js" />
+    <Content Include="admin\assets\fuelux\js\tree.min.js" />
+    <Content Include="admin\assets\fullcalendar\changelog.txt" />
+    <Content Include="admin\assets\fullcalendar\demos\agenda-views.html" />
+    <Content Include="admin\assets\fullcalendar\demos\basic-views.html" />
+    <Content Include="admin\assets\fullcalendar\demos\cupertino\images\ui-bg_diagonals-thick_90_eeeeee_40x40.png" />
+    <Content Include="admin\assets\fullcalendar\demos\cupertino\images\ui-bg_flat_15_cd0a0a_40x100.png" />
+    <Content Include="admin\assets\fullcalendar\demos\cupertino\images\ui-bg_glass_100_e4f1fb_1x400.png" />
+    <Content Include="admin\assets\fullcalendar\demos\cupertino\images\ui-bg_glass_50_3baae3_1x400.png" />
+    <Content Include="admin\assets\fullcalendar\demos\cupertino\images\ui-bg_glass_80_d7ebf9_1x400.png" />
+    <Content Include="admin\assets\fullcalendar\demos\cupertino\images\ui-bg_highlight-hard_100_f2f5f7_1x100.png" />
+    <Content Include="admin\assets\fullcalendar\demos\cupertino\images\ui-bg_highlight-hard_70_000000_1x100.png" />
+    <Content Include="admin\assets\fullcalendar\demos\cupertino\images\ui-bg_highlight-soft_100_deedf7_1x100.png" />
+    <Content Include="admin\assets\fullcalendar\demos\cupertino\images\ui-bg_highlight-soft_25_ffef8f_1x100.png" />
+    <Content Include="admin\assets\fullcalendar\demos\cupertino\images\ui-icons_2694e8_256x240.png" />
+    <Content Include="admin\assets\fullcalendar\demos\cupertino\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="admin\assets\fullcalendar\demos\cupertino\images\ui-icons_3d80b3_256x240.png" />
+    <Content Include="admin\assets\fullcalendar\demos\cupertino\images\ui-icons_72a7cf_256x240.png" />
+    <Content Include="admin\assets\fullcalendar\demos\cupertino\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="admin\assets\fullcalendar\demos\cupertino\theme.css" />
+    <Content Include="admin\assets\fullcalendar\demos\default.html" />
+    <Content Include="admin\assets\fullcalendar\demos\external-dragging.html" />
+    <Content Include="admin\assets\fullcalendar\demos\gcal.html" />
+    <Content Include="admin\assets\fullcalendar\demos\json.html" />
+    <Content Include="admin\assets\fullcalendar\demos\selectable.html" />
+    <Content Include="admin\assets\fullcalendar\demos\theme.html" />
+    <Content Include="admin\assets\fullcalendar\fullcalendar\bootstrap-fullcalendar.css" />
+    <Content Include="admin\assets\fullcalendar\fullcalendar\fullcalendar.css" />
+    <Content Include="admin\assets\fullcalendar\fullcalendar\fullcalendar.js" />
+    <Content Include="admin\assets\fullcalendar\fullcalendar\fullcalendar.min.js" />
+    <Content Include="admin\assets\fullcalendar\fullcalendar\fullcalendar.print.css" />
+    <Content Include="admin\assets\fullcalendar\fullcalendar\gcal.js" />
+    <Content Include="admin\assets\fullcalendar\GPL-LICENSE.txt" />
+    <Content Include="admin\assets\fullcalendar\jquery\jquery-1.8.1.min.js" />
+    <Content Include="admin\assets\fullcalendar\jquery\jquery-ui-1.8.23.custom.min.js" />
+    <Content Include="admin\assets\fullcalendar\MIT-LICENSE.txt" />
+    <Content Include="admin\assets\gritter\css\jquery.gritter.css" />
+    <Content Include="admin\assets\gritter\images\gritter-blue.png" />
+    <Content Include="admin\assets\gritter\images\gritter-brown.png" />
+    <Content Include="admin\assets\gritter\images\gritter-light.png" />
+    <Content Include="admin\assets\gritter\images\gritter-long.png" />
+    <Content Include="admin\assets\gritter\images\gritter-purple.png" />
+    <Content Include="admin\assets\gritter\images\gritter.png" />
+    <Content Include="admin\assets\gritter\images\ie-spacer.gif" />
+    <Content Include="admin\assets\gritter\images_original\gritter-light.png" />
+    <Content Include="admin\assets\gritter\images_original\gritter-long.png" />
+    <Content Include="admin\assets\gritter\images_original\gritter.png" />
+    <Content Include="admin\assets\gritter\images_original\ie-spacer.gif" />
+    <Content Include="admin\assets\gritter\images_original\trees.jpg" />
+    <Content Include="admin\assets\gritter\index.html" />
+    <Content Include="admin\assets\gritter\js\jquery.gritter.js" />
+    <Content Include="admin\assets\gritter\js\jquery.gritter.min.js" />
+    <Content Include="admin\assets\jcrop\css\Jcrop.gif" />
+    <Content Include="admin\assets\jcrop\css\jquery.Jcrop.css" />
+    <Content Include="admin\assets\jcrop\css\jquery.Jcrop.min.css" />
+    <Content Include="admin\assets\jcrop\demos\demo_files\demos.css" />
+    <Content Include="admin\assets\jcrop\demos\demo_files\image1.jpg" />
+    <Content Include="admin\assets\jcrop\demos\demo_files\image2.jpg" />
+    <Content Include="admin\assets\jcrop\demos\demo_files\image3.jpg" />
+    <Content Include="admin\assets\jcrop\demos\demo_files\image4.jpg" />
+    <Content Include="admin\assets\jcrop\demos\demo_files\image5.jpg" />
+    <Content Include="admin\assets\jcrop\demos\demo_files\main.css" />
+    <Content Include="admin\assets\jcrop\demos\demo_files\pool.jpg" />
+    <Content Include="admin\assets\jcrop\demos\demo_files\sago.jpg" />
+    <Content Include="admin\assets\jcrop\demos\demo_files\sagomod.jpg" />
+    <Content Include="admin\assets\jcrop\demos\demo_files\sagomod.png" />
+    <Content Include="admin\assets\jcrop\demos\non-image.html" />
+    <Content Include="admin\assets\jcrop\demos\styling.html" />
+    <Content Include="admin\assets\jcrop\demos\tutorial1.html" />
+    <Content Include="admin\assets\jcrop\demos\tutorial2.html" />
+    <Content Include="admin\assets\jcrop\demos\tutorial3.html" />
+    <Content Include="admin\assets\jcrop\demos\tutorial4.html" />
+    <Content Include="admin\assets\jcrop\demos\tutorial5.html" />
+    <Content Include="admin\assets\jcrop\index.html" />
+    <Content Include="admin\assets\jcrop\js\jquery.color.js" />
+    <Content Include="admin\assets\jcrop\js\jquery.Jcrop.js" />
+    <Content Include="admin\assets\jcrop\js\jquery.Jcrop.min.js" />
+    <Content Include="admin\assets\jcrop\js\jquery.min.js" />
+    <Content Include="admin\assets\jcrop\MIT-LICENSE.txt" />
+    <Content Include="admin\assets\jquery-easy-pie-chart\examples\excanvas.js" />
+    <Content Include="admin\assets\jquery-easy-pie-chart\examples\index.html" />
+    <Content Include="admin\assets\jquery-easy-pie-chart\examples\style.css" />
+    <Content Include="admin\assets\jquery-easy-pie-chart\img\easy-pie-chart.png" />
+    <Content Include="admin\assets\jquery-easy-pie-chart\jquery.easy-pie-chart.css" />
+    <Content Include="admin\assets\jquery-easy-pie-chart\jquery.easy-pie-chart.js" />
+    <Content Include="admin\assets\jquery-file-upload\cors\postmessage.html" />
+    <Content Include="admin\assets\jquery-file-upload\cors\result.html" />
+    <Content Include="admin\assets\jquery-file-upload\css\jquery.fileupload-ui-noscript.css" />
+    <Content Include="admin\assets\jquery-file-upload\css\jquery.fileupload-ui.css" />
+    <Content Include="admin\assets\jquery-file-upload\css\style.css" />
+    <Content Include="admin\assets\jquery-file-upload\img\loading.gif" />
+    <Content Include="admin\assets\jquery-file-upload\img\progressbar.gif" />
+    <Content Include="admin\assets\jquery-file-upload\index.html" />
+    <Content Include="admin\assets\jquery-file-upload\js\app.js" />
+    <Content Include="admin\assets\jquery-file-upload\js\cors\jquery.postmessage-transport.js" />
+    <Content Include="admin\assets\jquery-file-upload\js\cors\jquery.xdr-transport.js" />
+    <Content Include="admin\assets\jquery-file-upload\js\jquery.fileupload-angular.js" />
+    <Content Include="admin\assets\jquery-file-upload\js\jquery.fileupload-audio.js" />
+    <Content Include="admin\assets\jquery-file-upload\js\jquery.fileupload-fp.js" />
+    <Content Include="admin\assets\jquery-file-upload\js\jquery.fileupload-image.js" />
+    <Content Include="admin\assets\jquery-file-upload\js\jquery.fileupload-jquery-ui.js" />
+    <Content Include="admin\assets\jquery-file-upload\js\jquery.fileupload-process.js" />
+    <Content Include="admin\assets\jquery-file-upload\js\jquery.fileupload-ui.js" />
+    <Content Include="admin\assets\jquery-file-upload\js\jquery.fileupload-validate.js" />
+    <Content Include="admin\assets\jquery-file-upload\js\jquery.fileupload-video.js" />
+    <Content Include="admin\assets\jquery-file-upload\js\jquery.fileupload.js" />
+    <Content Include="admin\assets\jquery-file-upload\js\jquery.iframe-transport.js" />
+    <Content Include="admin\assets\jquery-file-upload\js\main.js" />
+    <Content Include="admin\assets\jquery-file-upload\js\vendor\canvas-to-blob.min.js" />
+    <Content Include="admin\assets\jquery-file-upload\js\vendor\jquery.ui.widget.js" />
+    <Content Include="admin\assets\jquery-file-upload\js\vendor\load-image.min.js" />
+    <Content Include="admin\assets\jquery-file-upload\js\vendor\tmpl.min.js" />
+    <Content Include="admin\assets\jquery-file-upload\server\gae-go\static\favicon.ico" />
+    <Content Include="admin\assets\jquery-file-upload\server\gae-go\static\robots.txt" />
+    <Content Include="admin\assets\jquery-file-upload\server\gae-python\static\favicon.ico" />
+    <Content Include="admin\assets\jquery-file-upload\server\gae-python\static\robots.txt" />
+    <Content Include="admin\assets\jquery-file-upload\server\node\server.js" />
+    <Content Include="admin\assets\jquery-file-upload\server\php\files\style-responsive.css" />
+    <Content Include="admin\assets\jquery-file-upload\test\index.html" />
+    <Content Include="admin\assets\jquery-file-upload\test\test.js" />
+    <Content Include="admin\assets\jquery-knob\index.html" />
+    <Content Include="admin\assets\jquery-knob\js\jquery.knob.js" />
+    <Content Include="admin\assets\jquery-multi-select\css\multi-select.css" />
+    <Content Include="admin\assets\jquery-multi-select\img\switch.png" />
+    <Content Include="admin\assets\jquery-multi-select\img\switch_original.png" />
+    <Content Include="admin\assets\jquery-multi-select\js\jquery.multi-select.js" />
+    <Content Include="admin\assets\jquery-multi-select\js\jquery.quicksearch.js" />
+    <Content Include="admin\assets\jquery-multi-select\LICENSE.txt" />
+    <Content Include="admin\assets\jquery-multi-select\test\lib\jasmine-1.2.0\jasmine-html.js" />
+    <Content Include="admin\assets\jquery-multi-select\test\lib\jasmine-1.2.0\jasmine.css" />
+    <Content Include="admin\assets\jquery-multi-select\test\lib\jasmine-1.2.0\jasmine.js" />
+    <Content Include="admin\assets\jquery-multi-select\test\lib\jasmine-jquery.js" />
+    <Content Include="admin\assets\jquery-multi-select\test\SpecRunner.html" />
+    <Content Include="admin\assets\jquery-multi-select\test\spec\multiSelectSpec.js" />
+    <Content Include="admin\assets\jquery-multi-select\test\spec\SpecHelper.js" />
+    <Content Include="admin\assets\jquery-multi-select\test\src\jquery.js" />
+    <Content Include="admin\assets\jquery-tags-input\example.html" />
+    <Content Include="admin\assets\jquery-tags-input\jquery.tagsinput.css" />
+    <Content Include="admin\assets\jquery-tags-input\jquery.tagsinput.js" />
+    <Content Include="admin\assets\jquery-tags-input\jquery.tagsinput.min.js" />
+    <Content Include="admin\assets\jquery-tags-input\test\fake_json_endpoint.html" />
+    <Content Include="admin\assets\jquery-tags-input\test\fake_plaintext_endpoint.html" />
+    <Content Include="admin\assets\jquery-ui\images\animated-overlay.gif" />
+    <Content Include="admin\assets\jquery-ui\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="admin\assets\jquery-ui\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="admin\assets\jquery-ui\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="admin\assets\jquery-ui\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="admin\assets\jquery-ui\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="admin\assets\jquery-ui\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="admin\assets\jquery-ui\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="admin\assets\jquery-ui\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="admin\assets\jquery-ui\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="admin\assets\jquery-ui\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="admin\assets\jquery-ui\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="admin\assets\jquery-ui\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="admin\assets\jquery-ui\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="admin\assets\jquery-ui\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="admin\assets\jquery-ui\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="admin\assets\jquery-ui\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="admin\assets\jquery-ui\images\ui-icons_222222_256x240.png" />
+    <Content Include="admin\assets\jquery-ui\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="admin\assets\jquery-ui\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="admin\assets\jquery-ui\images\ui-icons_454545_256x240.png" />
+    <Content Include="admin\assets\jquery-ui\images\ui-icons_888888_256x240.png" />
+    <Content Include="admin\assets\jquery-ui\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="admin\assets\jquery-ui\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="admin\assets\jquery-ui\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="admin\assets\jquery-ui\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="admin\assets\jquery-ui\jquery-ui-1.10.1.custom.css" />
+    <Content Include="admin\assets\jquery-ui\jquery-ui-1.10.1.custom.min.css" />
+    <Content Include="admin\assets\jquery-ui\jquery-ui-1.10.1.custom.min.js" />
+    <Content Include="admin\assets\jquery-ui\jquery-ui-1.10.2.custom.min.js" />
+    <Content Include="admin\assets\jquery-ui\jquery-ui-1.9.2.custom.min.js" />
+    <Content Include="admin\assets\morris.js-0.4.3\examples\area-as-line.html" />
+    <Content Include="admin\assets\morris.js-0.4.3\examples\area.html" />
+    <Content Include="admin\assets\morris.js-0.4.3\examples\bar-colors.html" />
+    <Content Include="admin\assets\morris.js-0.4.3\examples\bar-no-axes.html" />
+    <Content Include="admin\assets\morris.js-0.4.3\examples\bar.html" />
+    <Content Include="admin\assets\morris.js-0.4.3\examples\days.html" />
+    <Content Include="admin\assets\morris.js-0.4.3\examples\decimal-custom-hover.html" />
+    <Content Include="admin\assets\morris.js-0.4.3\examples\diagonal-xlabels-bar.html" />
+    <Content Include="admin\assets\morris.js-0.4.3\examples\diagonal-xlabels.html" />
+    <Content Include="admin\assets\morris.js-0.4.3\examples\donut-colors.html" />
+    <Content Include="admin\assets\morris.js-0.4.3\examples\donut-formatter.html" />
+    <Content Include="admin\assets\morris.js-0.4.3\examples\donut.html" />
+    <Content Include="admin\assets\morris.js-0.4.3\examples\dst.html" />
+    <Content Include="admin\assets\morris.js-0.4.3\examples\events.html" />
+    <Content Include="admin\assets\morris.js-0.4.3\examples\goals.html" />
+    <Content Include="admin\assets\morris.js-0.4.3\examples\lib\example.css" />
+    <Content Include="admin\assets\morris.js-0.4.3\examples\lib\example.js" />
+    <Content Include="admin\assets\morris.js-0.4.3\examples\lib\prettify.css" />
+    <Content Include="admin\assets\morris.js-0.4.3\examples\lib\prettify.js" />
+    <Content Include="admin\assets\morris.js-0.4.3\examples\months-no-smooth.html" />
+    <Content Include="admin\assets\morris.js-0.4.3\examples\negative.html" />
+    <Content Include="admin\assets\morris.js-0.4.3\examples\no-grid.html" />
+    <Content Include="admin\assets\morris.js-0.4.3\examples\non-continuous.html" />
+    <Content Include="admin\assets\morris.js-0.4.3\examples\non-date.html" />
+    <Content Include="admin\assets\morris.js-0.4.3\examples\quarters.html" />
+    <Content Include="admin\assets\morris.js-0.4.3\examples\stacked_bars.html" />
+    <Content Include="admin\assets\morris.js-0.4.3\examples\timestamps.html" />
+    <Content Include="admin\assets\morris.js-0.4.3\examples\updating.html" />
+    <Content Include="admin\assets\morris.js-0.4.3\examples\weeks.html" />
+    <Content Include="admin\assets\morris.js-0.4.3\examples\years.html" />
+    <Content Include="admin\assets\morris.js-0.4.3\examples\_template.html" />
+    <Content Include="admin\assets\morris.js-0.4.3\grunt.js" />
+    <Content Include="admin\assets\morris.js-0.4.3\morris.css" />
+    <Content Include="admin\assets\morris.js-0.4.3\morris.js" />
+    <Content Include="admin\assets\morris.js-0.4.3\morris.min.js" />
+    <Content Include="admin\assets\morris.js-0.4.3\raphael-min.js" />
+    <Content Include="admin\assets\morris.js-0.4.3\spec\specs.html" />
+    <Content Include="admin\assets\morris.js-0.4.3\spec\vendor\chai-1.3.0.js" />
+    <Content Include="admin\assets\morris.js-0.4.3\spec\vendor\chai-jquery-1.1.0.js" />
+    <Content Include="admin\assets\morris.js-0.4.3\spec\vendor\jquery-1.8.2.min.js" />
+    <Content Include="admin\assets\morris.js-0.4.3\spec\vendor\mocha-1.6.0.css" />
+    <Content Include="admin\assets\morris.js-0.4.3\spec\vendor\mocha-1.6.0.js" />
+    <Content Include="admin\assets\morris.js-0.4.3\spec\vendor\raphael-2.1.0.min.js" />
+    <Content Include="admin\assets\morris.js-0.4.3\spec\vendor\sinon-1.5.0.js" />
+    <Content Include="admin\assets\morris.js-0.4.3\spec\vendor\sinon-chai-2.1.2.js" />
+    <Content Include="admin\assets\nestable\index.html" />
+    <Content Include="admin\assets\nestable\jquery.nestable.css" />
+    <Content Include="admin\assets\nestable\jquery.nestable.js" />
+    <Content Include="admin\assets\xchart\d3.v3.js" />
+    <Content Include="admin\assets\xchart\d3.v3.min.js" />
+    <Content Include="admin\assets\xchart\xcharts.css" />
+    <Content Include="admin\assets\xchart\xcharts.js" />
+    <Content Include="admin\assets\xchart\xcharts.min.css" />
+    <Content Include="admin\assets\xchart\xcharts.min.js" />
+    <Content Include="admin\css\bootstrap-reset.css" />
+    <Content Include="admin\css\bootstrap-theme.css" />
+    <Content Include="admin\css\bootstrap-theme.min.css" />
+    <Content Include="admin\css\bootstrap.css" />
+    <Content Include="admin\css\bootstrap.min.css" />
+    <Content Include="admin\css\chosen-sprite%402x.png" />
+    <Content Include="admin\css\chosen-sprite.png" />
+    <Content Include="admin\css\chosen.min.css" />
+    <Content Include="admin\css\Default\editor.png" />
+    <Content Include="admin\css\Default\imagebrowser.png" />
+    <Content Include="admin\css\Default\indeterminate.gif" />
+    <Content Include="admin\css\Default\loading-image.gif" />
+    <Content Include="admin\css\Default\loading.gif" />
+    <Content Include="admin\css\Default\loading_2x.gif" />
+    <Content Include="admin\css\Default\markers.png" />
+    <Content Include="admin\css\Default\markers_2x.png" />
+    <Content Include="admin\css\Default\slider-h.gif" />
+    <Content Include="admin\css\Default\slider-v.gif" />
+    <Content Include="admin\css\Default\sprite.png" />
+    <Content Include="admin\css\Default\sprite_2x.png" />
+    <Content Include="admin\css\Default\sprite_kpi.png" />
+    <Content Include="admin\css\Default\sprite_kpi_2x.png" />
+    <Content Include="admin\css\gallery.css" />
+    <Content Include="admin\css\image-crop.css" />
+    <Content Include="admin\css\invoice-print.css" />
+    <Content Include="admin\css\kendo.common.min.css" />
+    <Content Include="admin\css\kendo.dataviz.default.min.css" />
+    <Content Include="admin\css\kendo.dataviz.min.css" />
+    <Content Include="admin\css\kendo.default.min.css" />
+    <Content Include="admin\css\navbar-fixed-top.css" />
+    <Content Include="admin\css\owl.carousel.css" />
+    <Content Include="admin\css\style-responsive.css" />
+    <Content Include="admin\css\style.css" />
+    <Content Include="admin\css\table-responsive.css" />
+    <Content Include="admin\css\tasks.css" />
+    <Content Include="admin\default.aspx" />
+    <Content Include="admin\error_404.aspx" />
+    <Content Include="admin\error_500.aspx" />
+    <Content Include="admin\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="admin\home.aspx" />
+    <Content Include="admin\img\404_icon.png" />
+    <Content Include="admin\img\500_icon.png" />
+    <Content Include="admin\img\arrow-up.png" />
+    <Content Include="admin\img\avatar-mini.jpg" />
+    <Content Include="admin\img\avatar-mini2.jpg" />
+    <Content Include="admin\img\avatar-mini3.jpg" />
+    <Content Include="admin\img\avatar-mini4.jpg" />
+    <Content Include="admin\img\avatar1.jpg" />
+    <Content Include="admin\img\avatar1_small.jpg" />
+    <Content Include="admin\img\chart-texture.jpg" />
+    <Content Include="admin\img\chat-attach.jpg" />
+    <Content Include="admin\img\chat-avatar.jpg" />
+    <Content Include="admin\img\chat-avatar2.jpg" />
+    <Content Include="admin\img\chat-search.png" />
+    <Content Include="admin\img\checkbox\check-off.png" />
+    <Content Include="admin\img\checkbox\check-on.png" />
+    <Content Include="admin\img\checkbox\radio-off.png" />
+    <Content Include="admin\img\checkbox\radio-on.png" />
+    <Content Include="admin\img\customSelect-arrow.gif" />
+    <Content Include="admin\img\email-img\banner.jpg" />
+    <Content Include="admin\img\email-img\icon-cal.png" />
+    <Content Include="admin\img\email-img\icon-tel.png" />
+    <Content Include="admin\img\email-img\image1.png" />
+    <Content Include="admin\img\email-img\image2.png" />
+    <Content Include="admin\img\email-img\image3.png" />
+    <Content Include="admin\img\email-img\image4.png" />
+    <Content Include="admin\img\email-img\main-img.png" />
+    <Content Include="admin\img\email-img\social-facebook.png" />
+    <Content Include="admin\img\email-img\social-google.png" />
+    <Content Include="admin\img\email-img\social-linkedin.png" />
+    <Content Include="admin\img\email-img\social-twitter.png" />
+    <Content Include="admin\img\email-img\social-youtube.png" />
+    <Content Include="admin\img\email-img\vector-lab.jpg" />
+    <Content Include="admin\img\favicon.ico" />
+    <Content Include="admin\img\fb-img.jpg" />
+    <Content Include="admin\img\file-search\ai.png" />
+    <Content Include="admin\img\file-search\doc.png" />
+    <Content Include="admin\img\file-search\email.png" />
+    <Content Include="admin\img\file-search\eps.png" />
+    <Content Include="admin\img\file-search\jpg.png" />
+    <Content Include="admin\img\file-search\pdf.png" />
+    <Content Include="admin\img\file-search\ppt.png" />
+    <Content Include="admin\img\file-search\psd.png" />
+    <Content Include="admin\img\file-search\rss.png" />
+    <Content Include="admin\img\file-search\xls.png" />
+    <Content Include="admin\img\file-search\zip.png" />
+    <Content Include="admin\img\flags\de.png" />
+    <Content Include="admin\img\flags\es.png" />
+    <Content Include="admin\img\flags\fr.png" />
+    <Content Include="admin\img\flags\ru.png" />
+    <Content Include="admin\img\flags\us.png" />
+    <Content Include="admin\img\follower-avatar.jpg" />
+    <Content Include="admin\img\gallery\1.jpg" />
+    <Content Include="admin\img\gallery\2.jpg" />
+    <Content Include="admin\img\gallery\3.jpg" />
+    <Content Include="admin\img\gallery\4.jpg" />
+    <Content Include="admin\img\gallery\5.jpg" />
+    <Content Include="admin\img\gallery\6.jpg" />
+    <Content Include="admin\img\gallery\7.jpg" />
+    <Content Include="admin\img\input-spinner.gif" />
+    <Content Include="admin\img\left-arrow.png" />
+    <Content Include="admin\img\lock-bg.jpg" />
+    <Content Include="admin\img\mail-avatar.jpg" />
+    <Content Include="admin\img\mask-square.png" />
+    <Content Include="admin\img\mask.png" />
+    <Content Include="admin\img\nav-expand.png" />
+    <Content Include="admin\img\pro-ac-1.png" />
+    <Content Include="admin\img\pro-ac-2.png" />
+    <Content Include="admin\img\product-list\pro-1.jpg" />
+    <Content Include="admin\img\product-list\pro-thumb-1.jpg" />
+    <Content Include="admin\img\product-list\pro-thumb-2.jpg" />
+    <Content Include="admin\img\product-list\pro-thumb-3.jpg" />
+    <Content Include="admin\img\product-list\pro-thumb-big.jpg" />
+    <Content Include="admin\img\product-list\pro1.jpg" />
+    <Content Include="admin\img\product-list\pro2.jpg" />
+    <Content Include="admin\img\product-list\pro3.jpg" />
+    <Content Include="admin\img\product1.jpg" />
+    <Content Include="admin\img\product2.png" />
+    <Content Include="admin\img\product3.png" />
+    <Content Include="admin\img\profile-avatar.jpg" />
+    <Content Include="admin\img\right-arrow.png" />
+    <Content Include="admin\img\ring.jpg" />
+    <Content Include="admin\img\search-icon.jpg" />
+    <Content Include="admin\img\sm-img-1.jpg" />
+    <Content Include="admin\img\sm-img-2.jpg" />
+    <Content Include="admin\img\sm-img-3.jpg" />
+    <Content Include="admin\img\tree-icons.png" />
+    <Content Include="admin\img\vector-lab.jpg" />
+    <Content Include="admin\js\additional-methods.min.js" />
+    <Content Include="admin\js\advanced-form-components.js" />
+    <Content Include="admin\js\all-chartjs.js" />
+    <Content Include="admin\js\bootstrap-switch.js" />
+    <Content Include="admin\js\bootstrap.js" />
+    <Content Include="admin\js\bootstrap.min.js" />
+    <Content Include="admin\js\chosen.jquery.min.js" />
+    <Content Include="admin\js\common-scripts.js" />
+    <Content Include="admin\js\common.js" />
+    <Content Include="admin\js\count.js" />
+    <Content Include="admin\js\draggable-portlet.js" />
+    <Content Include="admin\js\dynamic-table.js" />
+    <Content Include="admin\js\easy-pie-chart.js" />
+    <Content Include="admin\js\editable-table.js" />
+    <Content Include="admin\js\external-dragging-calendar.js" />
+    <Content Include="admin\js\flot-chart.js" />
+    <Content Include="admin\js\form-component.js" />
+    <Content Include="admin\js\form-image-crop.js" />
+    <Content Include="admin\js\form-validation-script.js" />
+    <Content Include="admin\js\ga.js" />
+    <Content Include="admin\js\gmaps-scripts.js" />
+    <Content Include="admin\js\gmaps.js" />
+    <Content Include="admin\js\gritter.js" />
+    <Content Include="admin\js\hover-dropdown.js" />
+    <Content Include="admin\js\html5shiv.js" />
+    <Content Include="admin\js\jquery-1.8.3.min.js" />
+    <Content Include="admin\js\jquery-ui-1.9.2.custom.min.js" />
+    <Content Include="admin\js\jquery.cookie.js" />
+    <Content Include="admin\js\jquery.customSelect.min.js" />
+    <Content Include="admin\js\jquery.dcjqaccordion.2.7.js" />
+    <Content Include="admin\js\jquery.dcjqaccordion.2.7.min.js" />
+    <Content Include="admin\js\jquery.js" />
+    <Content Include="admin\js\jquery.nicescroll.js" />
+    <Content Include="admin\js\jquery.numeric.js" />
+    <Content Include="admin\js\jquery.pulsate.min.js" />
+    <Content Include="admin\js\jquery.scrollTo.min.js" />
+    <Content Include="admin\js\jquery.sortable.min.js" />
+    <Content Include="admin\js\jquery.sparkline-11.js" />
+    <Content Include="admin\js\jquery.sparkline.js" />
+    <Content Include="admin\js\jquery.stepy.js" />
+    <Content Include="admin\js\jquery.tagsinput.js" />
+    <Content Include="admin\js\jquery.ui.touch-punch.min.js" />
+    <Content Include="admin\js\jquery.validate.min.js" />
+    <Content Include="admin\js\kendo.all.min.js" />
+    <Content Include="admin\js\modernizr.custom.js" />
+    <Content Include="admin\js\morris-script.js" />
+    <Content Include="admin\js\nestable.js" />
+    <Content Include="admin\js\owl.carousel.js" />
+    <Content Include="admin\js\pulstate.js" />
+    <Content Include="admin\js\respond.min.js" />
+    <Content Include="admin\js\respond.src.js" />
+    <Content Include="admin\js\sliders.js" />
+    <Content Include="admin\js\sparkline-chart.js" />
+    <Content Include="admin\js\tasks.js" />
+    <Content Include="admin\js\toucheffects.js" />
+    <Content Include="admin\js\tree.js" />
+    <Content Include="admin\js\views\modulos\administracion\clientes.js" />
+    <Content Include="admin\js\views\modulos\administracion\reservase.js" />
+    <Content Include="admin\js\views\modulos\administracion\reservas.js" />
+    <Content Include="admin\js\views\modulos\configuracion\listasPrecios.js" />
+    <Content Include="admin\js\views\modulos\configuracion\precios.js" />
+    <Content Include="admin\js\views\modulos\configuracion\servicios.js" />
+    <Content Include="admin\js\views\modulos\configuracion\zonas.js" />
+    <Content Include="admin\js\views\modulos\propiedades\fotos.js" />
+    <Content Include="admin\js\views\modulos\propiedades\propiedades.js" />
+    <Content Include="admin\logout.aspx" />
+    <Content Include="admin\modulos\administracion\clientes.aspx" />
+    <Content Include="admin\modulos\administracion\clientese.aspx" />
+    <Content Include="admin\modulos\administracion\reservas.aspx" />
+    <Content Include="admin\modulos\administracion\reservase.aspx" />
+    <Content Include="admin\modulos\configuracion\listasPrecios.aspx" />
+    <Content Include="admin\modulos\configuracion\listasPreciose.aspx" />
+    <Content Include="admin\modulos\configuracion\precios.aspx" />
+    <Content Include="admin\modulos\configuracion\preciose.aspx" />
+    <Content Include="admin\modulos\configuracion\servicios.aspx" />
+    <Content Include="admin\modulos\configuracion\serviciose.aspx" />
+    <Content Include="admin\modulos\configuracion\zonas.aspx" />
+    <Content Include="admin\modulos\configuracion\zonase.aspx" />
+    <Content Include="admin\modulos\propiedades\fotos.aspx" />
+    <Content Include="admin\modulos\propiedades\propiedades.aspx" />
+    <Content Include="admin\modulos\propiedades\propiedadese.aspx" />
+    <Content Include="App_Data\EmailTemplates\ConsultaPropiedad.txt" />
+    <Content Include="App_Data\EmailTemplates\Contacto.txt" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="css\bootstrap-touchspin.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="css\bootstrap.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="css\carousel.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="css\datepicker.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="css\font-awesome.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="css\owl.carousel.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="css\responsive.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="css\styles.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="files\propiedades\no_photo.png" />
+    <Content Include="files\servicios\icon-aire.svg" />
+    <Content Include="files\servicios\icon-calefaccion.svg" />
+    <Content Include="files\servicios\icon-camadoble.svg" />
+    <Content Include="files\servicios\icon-camasingle.svg" />
+    <Content Include="files\servicios\icon-clock-blue.svg" />
+    <Content Include="files\servicios\icon-cocina.svg" />
+    <Content Include="files\servicios\icon-dormitorios.svg" />
+    <Content Include="files\servicios\icon-gym.svg" />
+    <Content Include="files\servicios\icon-huesped.svg" />
+    <Content Include="files\servicios\icon-huespedes.svg" />
+    <Content Include="files\servicios\icon-lavadora.svg" />
+    <Content Include="files\servicios\icon-mascotas.svg" />
+    <Content Include="files\servicios\icon-piscina.svg" />
+    <Content Include="files\servicios\icon-tv.svg" />
+    <Content Include="files\servicios\icon-wifi.svg" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="img\barrio1.png" />
+    <Content Include="img\barrio2.png" />
+    <Content Include="img\barrio3.png" />
+    <Content Include="img\barrio4.png" />
+    <Content Include="img\dpto1.png" />
+    <Content Include="img\dpto2.png" />
+    <Content Include="img\dpto3.png" />
+    <Content Include="img\dpto4.png" />
+    <Content Include="img\dpto5.png" />
+    <Content Include="img\dpto6.png" />
+    <Content Include="img\icon-aire.svg" />
+    <Content Include="img\icon-ambientes.svg" />
+    <Content Include="img\icon-barrio.svg" />
+    <Content Include="img\icon-calefaccion.svg" />
+    <Content Include="img\icon-camadoble.svg" />
+    <Content Include="img\icon-camasingle.svg" />
+    <Content Include="img\icon-clock-blue.svg" />
+    <Content Include="img\icon-cocina.svg" />
+    <Content Include="img\icon-dormitorios.svg" />
+    <Content Include="img\icon-email-blue.svg" />
+    <Content Include="img\icon-email.svg" />
+    <Content Include="img\icon-facebook.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\icon-form-white.svg" />
+    <Content Include="img\icon-gym.svg" />
+    <Content Include="img\icon-huesped.svg" />
+    <Content Include="img\icon-huespedes.svg" />
+    <Content Include="img\icon-instagram.svg" />
+    <Content Include="img\icon-lavadora.svg" />
+    <Content Include="img\icon-linkedin.svg" />
+    <Content Include="img\icon-mascotas.svg" />
+    <Content Include="img\icon-mobile-blue.svg" />
+    <Content Include="img\icon-phone-blue.svg" />
+    <Content Include="img\icon-phone.svg" />
+    <Content Include="img\icon-pinterest.svg" />
+    <Content Include="img\icon-piscina.svg" />
+    <Content Include="img\icon-placeholder-blue.svg" />
+    <Content Include="img\icon-placeholder-white.svg" />
+    <Content Include="img\icon-skype-blue.svg" />
+    <Content Include="img\icon-social-blue.svg" />
+    <Content Include="img\icon-tv.svg" />
+    <Content Include="img\icon-twitter.svg" />
+    <Content Include="img\icon-user-blue.svg" />
+    <Content Include="img\icon-wifi.svg" />
+    <Content Include="img\icon-youtube.svg" />
+    <Content Include="img\icon1.svg" />
+    <Content Include="img\icon2.svg" />
+    <Content Include="img\icon3.svg" />
+    <Content Include="img\icon4.svg" />
+    <Content Include="img\left-arrow.svg" />
+    <Content Include="img\logo-color.svg" />
+    <Content Include="img\logo-white.svg" />
+    <Content Include="img\overlay.png" />
+    <Content Include="img\polygonal-bg-2.png" />
+    <Content Include="img\polygonal-bg.png" />
+    <Content Include="img\prop-arrow1.svg" />
+    <Content Include="img\prop-arrow2.svg" />
+    <Content Include="img\right-arrow.svg" />
+    <Content Include="img\slide1.png" />
+    <Content Include="img\slide2.png" />
+    <Content Include="img\slide3.png" />
+    <Content Include="img\slide4.png" />
+    <Content Include="img\slide5.png" />
+    <Content Include="img\slide6.png" />
+    <Content Include="img\star1-blue.svg" />
+    <Content Include="img\star1.svg" />
+    <Content Include="img\star2-blue.svg" />
+    <Content Include="img\star2.svg" />
+    <Content Include="img\user1.jpg" />
+    <Content Include="img\user2.jpg" />
+    <Content Include="img\user3.jpg" />
+    <Content Include="img\zoom-icon.svg" />
+    <Content Include="js\bootstrap-datepicker.js" />
+    <Content Include="js\bootstrap.js" />
+    <Content Include="js\carousel.js" />
+    <Content Include="js\common.js" />
+    <Content Include="js\custom.js" />
+    <Content Include="js\gmaps.js" />
+    <Content Include="js\jquery.bootstrap-touchspin.js" />
+    <Content Include="js\jquery.min.js" />
+    <Content Include="js\jquery.numeric.js" />
+    <Content Include="js\jquery.poptrox.js" />
+    <Content Include="js\owl.carousel.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="admin\assets\jquery-file-upload\server\php\files\thumbnail\" />
+    <Folder Include="files\videos\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="admin\assets\advanced-datatable\component.json" />
+    <Content Include="admin\assets\advanced-datatable\docs\media\license\Syntax Highlighter" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\editable_ajax.php" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\infiniteScroll.php" />
+    <Content Include="admin\assets\advanced-datatable\examples\examples_support\syntax\license\Syntax Highlighter" />
+    <Content Include="admin\assets\advanced-datatable\examples\server_side\scripts\custom_data_property.php" />
+    <Content Include="admin\assets\advanced-datatable\examples\server_side\scripts\details_col.php" />
+    <Content Include="admin\assets\advanced-datatable\examples\server_side\scripts\filter_col.php" />
+    <Content Include="admin\assets\advanced-datatable\examples\server_side\scripts\id.php" />
+    <Content Include="admin\assets\advanced-datatable\examples\server_side\scripts\id_jsonp.php" />
+    <Content Include="admin\assets\advanced-datatable\examples\server_side\scripts\jsonp.php" />
+    <Content Include="admin\assets\advanced-datatable\examples\server_side\scripts\objects.php" />
+    <Content Include="admin\assets\advanced-datatable\examples\server_side\scripts\objects_jsonp.php" />
+    <Content Include="admin\assets\advanced-datatable\examples\server_side\scripts\post.php" />
+    <Content Include="admin\assets\advanced-datatable\examples\server_side\scripts\server_processing.php" />
+    <Content Include="admin\assets\advanced-datatable\extras\AutoFill\media\docs\media\license\Syntax Highlighter" />
+    <Content Include="admin\assets\advanced-datatable\extras\AutoFill\media\js\AutoFill.min.js.gz" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColReorder\media\docs\media\license\Syntax Highlighter" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColReorder\media\js\ColReorder.min.js.gz" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColVis\media\docs\media\license\Syntax Highlighter" />
+    <Content Include="admin\assets\advanced-datatable\extras\ColVis\media\js\ColVis.min.js.gz" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\docs\media\license\Syntax Highlighter" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedColumns\media\js\FixedColumns.min.js.gz" />
+    <Content Include="admin\assets\advanced-datatable\extras\FixedHeader\js\FixedHeader.min.js.gz" />
+    <Content Include="admin\assets\advanced-datatable\extras\KeyTable\js\KeyTable.min.js.gz" />
+    <Content Include="admin\assets\advanced-datatable\extras\Scroller\media\data\server_processing.php" />
+    <Content Include="admin\assets\advanced-datatable\extras\Scroller\media\docs\media\license\Syntax Highlighter" />
+    <Content Include="admin\assets\advanced-datatable\extras\Scroller\media\js\dataTables.scroller.min.js.gz" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\media\as3\lib\AlivePDF.swc" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\media\as3\ZeroClipboard.as" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\media\as3\ZeroClipboardPdf.as" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\media\images\psd\collection.psd" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\media\images\psd\copy document.psd" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\media\images\psd\file_types.psd" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\media\images\psd\printer.psd" />
+    <Content Include="admin\assets\advanced-datatable\extras\TableTools\media\js\TableTools.min.js.gz" />
+    <Content Include="admin\assets\advanced-datatable\media\images\Sorting icons.psd" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\controller.php" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\performance\large.php" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\templates\-complex_header.php" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\templates\2512.php" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\templates\6776.php" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\templates\complex_header_2.php" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\templates\deferred_table.php" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\templates\dom_data.php" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\templates\dom_data_th.php" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\templates\dom_data_two_headers.php" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\templates\dymanic_table.php" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\templates\empty_table.php" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\templates\html_table.php" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\templates\js_data.php" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\templates\js_data_mixed_types.php" />
+    <Content Include="admin\assets\advanced-datatable\media\unit_testing\templates\two_tables.php" />
+    <Content Include="admin\assets\advanced-datatable\package.json" />
+    <Content Include="admin\assets\advanced-datatable\scripts\jshint.config" />
+    <Content Include="admin\assets\advanced-datatable\scripts\make.sh" />
+    <Content Include="admin\assets\advanced-datatable\scripts\unit_tests.sh" />
+    <Content Include="admin\assets\bootstrap-colorpicker\less\colorpicker.less" />
+    <Content Include="admin\assets\bootstrap-datepicker\less\datepicker.less" />
+    <Content Include="admin\assets\bootstrap-daterangepicker\README.md" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\.travis.yml" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\bower.json" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\build\build.less" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\build\build_standalone.less" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\less\datetimepicker.less" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\LICENSE" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\README.md" />
+    <Content Include="admin\assets\bootstrap-datetimepicker\tests\README.md" />
+    <Content Include="admin\assets\bootstrap-switch\.gitignore" />
+    <Content Include="admin\assets\bootstrap-switch\bower.json" />
+    <Content Include="admin\assets\bootstrap-switch\component.json" />
+    <Content Include="admin\assets\bootstrap-switch\composer.json" />
+    <Content Include="admin\assets\bootstrap-switch\CONTRIBUTING.md" />
+    <Content Include="admin\assets\bootstrap-switch\LICENSE" />
+    <Content Include="admin\assets\bootstrap-switch\README.md" />
+    <Content Include="admin\assets\bootstrap-switch\static\less\bootstrap-switch.less" />
+    <Content Include="admin\assets\bootstrap-switch\static\less\deps\mixins.less" />
+    <Content Include="admin\assets\bootstrap-switch\static\less\deps\variables.less" />
+    <Content Include="admin\assets\bootstrap-timepicker\.gitignore" />
+    <Content Include="admin\assets\bootstrap-timepicker\less\timepicker.less" />
+    <Content Include="admin\assets\bootstrap-timepicker\README.md" />
+    <Content Include="admin\assets\chart-master\.gitignore" />
+    <Content Include="admin\assets\chart-master\component.json" />
+    <Content Include="admin\assets\chart-master\docs\prettify.less" />
+    <Content Include="admin\assets\chart-master\docs\styles.less" />
+    <Content Include="admin\assets\chart-master\LICENSE.md" />
+    <Content Include="admin\assets\chart-master\readme.md" />
+    <Content Include="admin\assets\ckeditor\CHANGES.md" />
+    <Content Include="admin\assets\ckeditor\LICENSE.md" />
+    <Content Include="admin\assets\ckeditor\plugins\scayt\LICENSE.md" />
+    <Content Include="admin\assets\ckeditor\plugins\scayt\README.md" />
+    <Content Include="admin\assets\ckeditor\plugins\wsc\LICENSE.md" />
+    <Content Include="admin\assets\ckeditor\plugins\wsc\README.md" />
+    <Content Include="admin\assets\ckeditor\README.md" />
+    <Content Include="admin\assets\ckeditor\samples\assets\posteddata.php" />
+    <Content Include="admin\assets\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.fla" />
+    <Content Include="admin\assets\ckeditor\samples\sample_posteddata.php" />
+    <Content Include="admin\assets\ckeditor\skins\moono\readme.md" />
+    <Content Include="admin\assets\dropzone\css\stylus\basic.styl" />
+    <Content Include="admin\assets\dropzone\css\stylus\dropzone.styl" />
+    <Content Include="admin\assets\dropzone\upload.php" />
+    <Content Include="admin\assets\fancybox\.gitattributes" />
+    <Content Include="admin\assets\fancybox\CHANGELOG.md" />
+    <Content Include="admin\assets\fancybox\README.md" />
+    <Content Include="admin\assets\file-uploader\blueimp-file-upload.jquery.json" />
+    <Content Include="admin\assets\file-uploader\bower.json" />
+    <Content Include="admin\assets\file-uploader\CONTRIBUTING.md" />
+    <Content Include="admin\assets\file-uploader\package.json" />
+    <Content Include="admin\assets\file-uploader\README.md" />
+    <Content Include="admin\assets\file-uploader\server\gae-go\app.yaml" />
+    <Content Include="admin\assets\file-uploader\server\gae-go\app\main.go" />
+    <Content Include="admin\assets\file-uploader\server\gae-python\app.yaml" />
+    <Content Include="admin\assets\file-uploader\server\gae-python\main.py" />
+    <Content Include="admin\assets\file-uploader\server\node\.gitignore" />
+    <Content Include="admin\assets\file-uploader\server\node\package.json" />
+    <Content Include="admin\assets\file-uploader\server\node\public\files\.gitignore" />
+    <Content Include="admin\assets\file-uploader\server\node\tmp\.gitignore" />
+    <Content Include="admin\assets\file-uploader\server\php\files\.gitignore" />
+    <Content Include="admin\assets\file-uploader\server\php\files\.htaccess" />
+    <Content Include="admin\assets\file-uploader\server\php\index.php" />
+    <Content Include="admin\assets\file-uploader\server\php\UploadHandler.php" />
+    <Content Include="admin\assets\flot\examples\data-eu-gdp-growth-1.json" />
+    <Content Include="admin\assets\flot\examples\data-eu-gdp-growth-2.json" />
+    <Content Include="admin\assets\flot\examples\data-eu-gdp-growth-3.json" />
+    <Content Include="admin\assets\flot\examples\data-eu-gdp-growth-4.json" />
+    <Content Include="admin\assets\flot\examples\data-eu-gdp-growth-5.json" />
+    <Content Include="admin\assets\flot\examples\data-eu-gdp-growth.json" />
+    <Content Include="admin\assets\flot\examples\data-japan-gdp-growth.json" />
+    <Content Include="admin\assets\flot\examples\data-usa-gdp-growth.json" />
+    <Content Include="admin\assets\flot\Makefile" />
+    <Content Include="admin\assets\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="admin\assets\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="admin\assets\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="admin\assets\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="admin\assets\font-awesome\less\bordered-pulled.less" />
+    <Content Include="admin\assets\font-awesome\less\core.less" />
+    <Content Include="admin\assets\font-awesome\less\fixed-width.less" />
+    <Content Include="admin\assets\font-awesome\less\font-awesome.less" />
+    <Content Include="admin\assets\font-awesome\less\icons.less" />
+    <Content Include="admin\assets\font-awesome\less\larger.less" />
+    <Content Include="admin\assets\font-awesome\less\list.less" />
+    <Content Include="admin\assets\font-awesome\less\mixins.less" />
+    <Content Include="admin\assets\font-awesome\less\path.less" />
+    <Content Include="admin\assets\font-awesome\less\rotated-flipped.less" />
+    <Content Include="admin\assets\font-awesome\less\spinning.less" />
+    <Content Include="admin\assets\font-awesome\less\stacked.less" />
+    <Content Include="admin\assets\font-awesome\less\variables.less" />
+    <Content Include="admin\assets\font-awesome\scss\font-awesome.scss" />
+    <Content Include="admin\assets\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="admin\assets\font-awesome\scss\_core.scss" />
+    <Content Include="admin\assets\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="admin\assets\font-awesome\scss\_icons.scss" />
+    <Content Include="admin\assets\font-awesome\scss\_larger.scss" />
+    <Content Include="admin\assets\font-awesome\scss\_list.scss" />
+    <Content Include="admin\assets\font-awesome\scss\_mixins.scss" />
+    <Content Include="admin\assets\font-awesome\scss\_path.scss" />
+    <Content Include="admin\assets\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="admin\assets\font-awesome\scss\_spinning.scss" />
+    <Content Include="admin\assets\font-awesome\scss\_stacked.scss" />
+    <Content Include="admin\assets\font-awesome\scss\_variables.scss" />
+    <Content Include="admin\assets\fuelux\COPYING" />
+    <Content Include="admin\assets\fuelux\README.md" />
+    <Content Include="admin\assets\fullcalendar\demos\json-events.php" />
+    <Content Include="admin\assets\gritter\README.markdown" />
+    <Content Include="admin\assets\jcrop\crop-demo.php" />
+    <Content Include="admin\assets\jcrop\demos\crop.php" />
+    <Content Include="admin\assets\jcrop\README.md" />
+    <Content Include="admin\assets\jquery-easy-pie-chart\jquery.easy-pie-chart.coffee" />
+    <Content Include="admin\assets\jquery-easy-pie-chart\Makefile" />
+    <Content Include="admin\assets\jquery-easy-pie-chart\Readme.md" />
+    <Content Include="admin\assets\jquery-file-upload\.gitignore" />
+    <Content Include="admin\assets\jquery-file-upload\blueimp-file-upload.jquery.json" />
+    <Content Include="admin\assets\jquery-file-upload\CONTRIBUTING.md" />
+    <Content Include="admin\assets\jquery-file-upload\package.json" />
+    <Content Include="admin\assets\jquery-file-upload\README.md" />
+    <Content Include="admin\assets\jquery-file-upload\server\gae-go\app.yaml" />
+    <Content Include="admin\assets\jquery-file-upload\server\gae-go\app\main.go" />
+    <Content Include="admin\assets\jquery-file-upload\server\gae-python\app.yaml" />
+    <Content Include="admin\assets\jquery-file-upload\server\gae-python\main.py" />
+    <Content Include="admin\assets\jquery-file-upload\server\node\.gitignore" />
+    <Content Include="admin\assets\jquery-file-upload\server\node\package.json" />
+    <Content Include="admin\assets\jquery-file-upload\server\node\public\files\thumbnail\.gitignore" />
+    <Content Include="admin\assets\jquery-file-upload\server\node\tmp\.gitignore" />
+    <Content Include="admin\assets\jquery-file-upload\server\php\files\.htaccess" />
+    <Content Include="admin\assets\jquery-file-upload\server\php\index.php" />
+    <Content Include="admin\assets\jquery-file-upload\server\php\UploadHandler.php" />
+    <Content Include="admin\assets\jquery-knob\README.md" />
+    <Content Include="admin\assets\jquery-multi-select\.gitignore" />
+    <Content Include="admin\assets\jquery-multi-select\bower.json" />
+    <Content Include="admin\assets\jquery-multi-select\multi-select.jquery.json" />
+    <Content Include="admin\assets\jquery-multi-select\README.markdown" />
+    <Content Include="admin\assets\jquery-multi-select\test\lib\jasmine-1.2.0\MIT.LICENSE" />
+    <Content Include="admin\assets\jquery-tags-input\README.md" />
+    <Content Include="admin\assets\morris.js-0.4.3\.gitignore" />
+    <Content Include="admin\assets\morris.js-0.4.3\.travis.yml" />
+    <Content Include="admin\assets\morris.js-0.4.3\component.json" />
+    <Content Include="admin\assets\morris.js-0.4.3\less\morris.core.less" />
+    <Content Include="admin\assets\morris.js-0.4.3\lib\morris.area.coffee" />
+    <Content Include="admin\assets\morris.js-0.4.3\lib\morris.bar.coffee" />
+    <Content Include="admin\assets\morris.js-0.4.3\lib\morris.coffee" />
+    <Content Include="admin\assets\morris.js-0.4.3\lib\morris.donut.coffee" />
+    <Content Include="admin\assets\morris.js-0.4.3\lib\morris.grid.coffee" />
+    <Content Include="admin\assets\morris.js-0.4.3\lib\morris.hover.coffee" />
+    <Content Include="admin\assets\morris.js-0.4.3\lib\morris.line.coffee" />
+    <Content Include="admin\assets\morris.js-0.4.3\package.json" />
+    <Content Include="admin\assets\morris.js-0.4.3\README.md" />
+    <Content Include="admin\assets\morris.js-0.4.3\spec\lib\area\area_spec.coffee" />
+    <Content Include="admin\assets\morris.js-0.4.3\spec\lib\bar\bar_spec.coffee" />
+    <Content Include="admin\assets\morris.js-0.4.3\spec\lib\bar\colours.coffee" />
+    <Content Include="admin\assets\morris.js-0.4.3\spec\lib\commas_spec.coffee" />
+    <Content Include="admin\assets\morris.js-0.4.3\spec\lib\donut\donut_spec.coffee" />
+    <Content Include="admin\assets\morris.js-0.4.3\spec\lib\grid\auto_grid_lines_spec.coffee" />
+    <Content Include="admin\assets\morris.js-0.4.3\spec\lib\grid\set_data_spec.coffee" />
+    <Content Include="admin\assets\morris.js-0.4.3\spec\lib\grid\y_label_format_spec.coffee" />
+    <Content Include="admin\assets\morris.js-0.4.3\spec\lib\hover_spec.coffee" />
+    <Content Include="admin\assets\morris.js-0.4.3\spec\lib\label_series_spec.coffee" />
+    <Content Include="admin\assets\morris.js-0.4.3\spec\lib\line\line_spec.coffee" />
+    <Content Include="admin\assets\morris.js-0.4.3\spec\lib\pad_spec.coffee" />
+    <Content Include="admin\assets\morris.js-0.4.3\spec\lib\parse_time_spec.coffee" />
+    <Content Include="admin\assets\morris.js-0.4.3\spec\support\placeholder.coffee" />
+    <Content Include="admin\assets\nestable\README.md" />
+    <Content Include="admin\assets\xchart\LICENSE" />
+    <Content Include="admin\assets\xchart\README.md" />
+    <Content Include="admin\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="admin\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="admin\fonts\glyphicons-halflings-regular.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ACHE.Extensions\ACHE.Extensions.csproj">
+      <Project>{7a7039b5-7c3d-4cae-8581-95feb281f315}</Project>
+      <Name>ACHE.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ACHE.Model\ACHE.Model.csproj">
+      <Project>{3da21132-6314-4144-beaf-adfaf74e6b40}</Project>
+      <Name>ACHE.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\bootstrap.css.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\GothamBook.ttf" />
+    <Content Include="fonts\Raleway-Regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Detalle.cshtml" />
+    <Content Include="Views\Home\Listado.cshtml" />
+    <Content Include="Views\Home\Reserva.cshtml" />
+    <Content Include="Views\Home\_footer.cshtml" />
+    <Content Include="Views\Home\_header.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Reservar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="admin\Admin.Master" />
+    <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\Deploy.pubxml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>26588</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:27442/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

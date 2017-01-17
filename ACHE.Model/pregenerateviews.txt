@@ -1,0 +1,34 @@
+Step 1
+Go to your Model properties and select “Copy to Output Directory” for the Metadata Artifact Processing option.
+
+Step 2
+
+Next you need to setup the Pre-build:
+"%windir%\Microsoft.NET\Framework\v4.0.30319\EdmGen.exe" /mode:ViewGeneration "/inssdl:$(TargetDir)KonSalModel.ssdl" "/incsdl:$(TargetDir)KonSalModel.csdl" "/inmsl:$(TargetDir)KonSalModel.msl" "/outviews:$(ProjectDir)KonSalModel.Views.cs" /nologo /language:CSharp
+
+Step 3
+The .ssdl, .csdl & .msl files will be generated on every build and output to the TargetDir, however it’s a good idea to include them in your Project.
+
+In the Post-build event you can add a simple XCOPY like below to copy the files to the root of your project:
+
+XCOPY "$(TargetDir)MyModel.csdl" "$(ProjectDir)" /R /Y 
+XCOPY "$(TargetDir)MyModel.ssdl" "$(ProjectDir)" /R /Y 
+XCOPY "$(TargetDir)MyModel.msl" "$(ProjectDir)" /R /Y
+
+ 
+
+Step 4
+Build the project which contains your Entity Model.
+
+If it built successfully you should find the following files in the root of your Project folder
+
+MyModel.Views.cs
+MyModel.csdl
+MyModel.ssdl
+MyModel.msl
+Go ahead and include all these files in your project, Show All Files > Right Click > Include In Project
+
+Step 5
+Now for MyModel.csl, MyModel.ssdl, MyModel.msl you want to include these as an embedded resource
+
+For each of the above files select the “Embedded Resource” Build Action in the Properties window.

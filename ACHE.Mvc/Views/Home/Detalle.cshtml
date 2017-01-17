@@ -1,0 +1,650 @@
+﻿@model ACHE.Models.DetalleViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+@Html.Partial("_header")
+<div class="container-fluid header-form-fixed">
+    <div class="container">
+        @using (Html.BeginForm("Reserva", "Home", FormMethod.Post)) {
+            @Html.ValidationSummary(true, "", new { @style = "color: red;" })
+            @Html.HiddenFor(m => m.IDPropiedad)
+            @Html.HiddenFor(m => m.Nombre)
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 checkin-cont">
+                <div class="form-group" id="checkin-datepicker">
+                    <label for="exampleInputEmail1">Check In</label>
+                    @Html.TextBoxFor(m => m.Reserva.FechaIngreso, new { @class = "form-control", @placeholder = "dd/mm/aaaa" })
+                </div>
+            </div>
+@*<div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 checkout-cont">
+                <div class="form-group" id="checkout-datepicker">
+                    <label for="exampleInputEmail1">Check Out</label>
+                    @Html.TextBoxFor(m => m.Reserva.FechaEgreso, new { @class = "form-control", @placeholder = "dd/mm/aaaa" })
+                </div>
+            </div>*@
+            <div class="col-lg-3 col-md-2 col-sm-4 col-xs-4 huespedes-cont">
+                <div class="form-group" id="huespedes-counter">
+                    <label for="exampleInputEmail1">Huéspedes</label>
+                    @Html.TextBoxFor(m => m.Reserva.CantHuespedes, new { @class = "form-control numeric", @maxlength = "2", @value = "0" })
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 header-form-fixed-btn text-center">
+                <input type="submit" class="btn btn-default-red-filled" value="Reservar ahora" />
+                @*<a href="" class="btn btn-default-red-filled">Reservar ahora</a>*@
+                <a href="#" class="btn btn-default-red" onclick="showContacto();">Contáctanos</a>
+                @*data-toggle="modal" data-target="#modal-contact"*@
+            </div>
+        }
+    </div>
+</div>
+<section id="detalle">
+    <div class="container-fluid detail-header">
+        <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12 text-left detail-header-h">
+            <h2>
+                <img src="/img/icon-placeholder-white.svg" />
+                @Model.Nombre. En <span class="txt-red">@Model.Zona</span>, @Model.CantAmbientes ambientes. Código: @Model.Codigo
+            </h2>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 detail-header-social">
+            <p>
+                <a href="@Url.Action("Listado")">&laquo; Volver</a>
+                Compartir:
+
+                <a href="#" onclick="compartir(1);" style="color: initial; padding: initial; border: none; margin-right: initial;">
+                    <img src="/img/icon-facebook.svg" alt="Facebook" />
+                </a>
+                <a href="#" onclick="compartir(2);" style="color: initial; padding: initial; border: none; margin-right: initial;">
+                    <img src="/img/icon-twitter.svg" alt="Twitter" />
+                </a>
+                <a href="#" onclick="compartir(3);" style="color: initial; padding: initial; border: none; margin-right: initial;">
+                    <img src="/img/icon-google-plus.svg" alt="Google+" />
+                </a>
+                <a href="#" onclick="compartir(4);" style="color: initial; padding: initial; border: none; margin-right: initial;">
+                    <img src="/img/icon-pinterest.svg" alt="Pinterest" />
+                </a>
+            </p>
+        </div>
+    </div>
+    <div class="modal fade" id="modal-contact" tabindex="-1" role="dialog" aria-labelledby="ModalLabel2">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Consultanos</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="col-lg-12 col-md-12  col-sm-12  col-xs-12 text-center">
+                        <form>
+                            <label id="lblError" style="color: red;"></label>
+                            <label id="lblOk" style="color: green; display: none;">Su consulta ha sido enviada correctamente!</label>
+                            <input type="text" class="form-control" id="txtNombre" placeholder="Nombre" required />
+                            <input type="text" class="form-control" id="txtApellido" placeholder="Apellido" required />
+                            <input type="email" class="form-control" id="txtEmail" placeholder="Email" required />
+                            <input type="text" class="form-control" id="txtTelefono" placeholder="Teléfono" required />
+                            <textarea class="form-control" rows="8" id="txtConsulta" placeholder="Consulta" required></textarea>
+                            <a href="#" class="btn btn-success full" onclick="validarContacto(); return false;">Envíar consulta</a>
+                            @Html.HiddenFor(m => m.IDPropiedad, new { @id = "hdnIDPropiedad" })
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid detail-content">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 detail-prop">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 detail-tabs">
+                <ul class="nav nav-tabs" role="tablist" id="PropTabs">
+                    <li role="presentation" class="active"><a href="#fotos" aria-controls="fotos" role="tab" data-toggle="tab">Fotos</a></li>
+                    @if (!string.IsNullOrEmpty(Model.Video)) { 
+                        <li role="presentation"><a href="#video" aria-controls="video" role="tab" data-toggle="tab">Video</a></li>
+                    }
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active prop-fotos" id="fotos">
+                        <div id="slider1-list" class="carousel slide prop-fotos-slider" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                @for (int d = 0; d < Model.Fotos.Count(); d++) {
+                                    if (d == 0) {
+                                    <li data-target="#slider1-list" data-slide-to="@d" class="active"></li>    
+                                    }
+                                    else {
+                                    <li data-target="#slider1-list" data-slide-to="@d"></li>        
+                                    }
+                                }
+                                @*<li data-target="#slider1-list" data-slide-to="0" class="active"></li>
+                                <li data-target="#slider1-list" data-slide-to="1"></li>
+                                <li data-target="#slider1-list" data-slide-to="2"></li>*@
+                            </ol>
+                            <div class="carousel-inner" role="listbox">
+                                @for (int j = 0; j < Model.Fotos.Count(); j++) {
+                                    if (j == 0) { 
+                                    <div class="item active">
+                                        <img src="/files/propiedades/@Model.Fotos[j].Foto" />
+                                    </div>
+                                    }
+                                    else {
+                                    <div class="item">
+                                        <img src="/files/propiedades/@Model.Fotos[j].Foto" />
+                                    </div>
+                                    }
+                                }
+                            </div>
+                            <a class="left carousel-control" href="#slider1-list" role="button" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true">
+                                    <img src="/img/left-arrow.svg" /></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#slider1-list" role="button" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">
+                                    <img src="/img/right-arrow.svg" /></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    @if (!string.IsNullOrEmpty(Model.Video)) { 
+                        <div role="tabpanel" class="tab-pane prop-video" id="video">
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" src="http://www.youtube.co/embed/@Model.Video" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 detail-prop-features">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 detail-prop-header">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-left detail-prop-precio">
+                            <strong>$@Model.PrecioMes ARS</strong>/mes
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right detail-prop-calidad">
+                        </div>
+                        <img src="/img/icon-ambientes.svg" />&nbsp;@Model.CantAmbientes Ambientes
+                        &nbsp;
+                        <img src="/img/icon-huespedes.svg" />&nbsp;@Model.CantHuespedes Huéspedes
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 detail-prop-header-hr">
+                            <hr class="gray">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 detail-prop-desc text-justify">
+                        <h4>Descripción</h4>
+                        <hr class="green">
+                        <p>@Model.Descripcion</p>
+                    </div>
+
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 detail-prop-serv">
+                        <h4>Servicios</h4>
+                        <hr class="green">
+                        @if (Model.Servicios.Count() > 6) { 
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 detail-prop-serv-col">
+                                <ul>
+                                    @for (int i = 0; i <= 5; i++) { 
+                                        <li>
+                                            <div class="icon">
+                                                <img src="/files/servicios/@Model.Servicios[i].Imagen" />
+                                            </div>
+                                            @Model.Servicios[i].Nombre
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 detail-prop-serv-col">
+                                <ul>
+                                    @for (int j = 5; j < Model.Servicios.Count(); j++) { 
+                                        <li>
+                                            <div class="icon">
+                                                <img src="/files/servicios/@Model.Servicios[j].Imagen" />
+                                            </div>
+                                            @Model.Servicios[j].Nombre
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        }
+                        else {
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 detail-prop-serv-col">
+                                <ul>
+                                    @for (int k = 0; k < Model.Servicios.Count(); k++) { 
+                                        <li>
+                                            <div class="icon">
+                                                <img src="/files/servicios/@Model.Servicios[k].Imagen" />
+                                            </div>
+                                            @Model.Servicios[k].Nombre
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        }
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 detail-prop-tarifas">
+                        <h4>Tarifas</h4>
+                        <hr class="green">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Tipo</th>
+                                    <th>Día</th>
+                                    <th>Semana</th>
+                                    <th>Quincena</th>
+                                    <th>Mes</th>
+                                </tr>
+                            </thead>
+                            <tr>
+                                <td><strong>Alquiler</strong></td>
+                                <td>$@Model.PrecioDia</td>
+                                <td>$@Model.PrecioSemana</td>
+                                <td>$@Model.PrecioQuincena</td>
+                                <td>$@Model.PrecioMes</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 detail-prop-disp">
+                        <h4>Disponibilidad</h4>
+                        <hr class="green">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 detail-prop-disp-cal" id="dp6" data-date="dd-mm-yyyy" data-date-format="dd-mm-yyyy"></div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 detail-prop-disp-cal" id="dp7" data-date-format="dd-mm-yyyy"></div>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center detail-prop-reserv">
+                        @using (Html.BeginForm("Reserva", "Home", FormMethod.Post)) {
+                            @Html.HiddenFor(m => m.IDPropiedad)
+                            @Html.HiddenFor(m => m.Nombre)
+                            <input type="submit" class="btn btn-default-red-filled" value="Reservar ahora" />
+                            <a href="#" class="btn btn-default-red" onclick="showContacto();">Contáctanos</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 map-container">
+            <div id="map2"></div>
+            @*<div class="container-fluid map-barrio-box">
+                <div class="col-lg-12 col-md-12 col-sm-10 col-xs-12 barrio-box-title">
+                    <div class="icon">
+                        <img src="/img/icon-barrio.svg">
+                    </div>
+                    <div class="">
+                        <h4>Palermo Hollywood</h4>
+                        <p>Ciudad Autónoma de Buenos Aires</p>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 barrio-box-pics">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 pic">
+                        <img src="/img/barrio1.png" width="100%" height="100%">
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 pic">
+                        <img src="/img/barrio2.png" width="100%" height="100%">
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 pic">
+                        <img src="/img/barrio3.png" width="100%" height="100%">
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 pic">
+                        <img src="/img/barrio4.png" width="100%" height="100%">
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 pic">
+                        <img src="/img/barrio1.png" width="100%" height="100%">
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 pic">
+                        <img src="/img/barrio2.png" width="100%" height="100%">
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 pic">
+                        <img src="/img/barrio3.png" width="100%" height="100%">
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 pic">
+                        <img src="/img/barrio4.png" width="100%" height="100%">
+                    </div>
+                </div>
+            </div>*@
+        </div>
+    </div>
+</section>
+<section id="prop-similares">
+    <div class="container-fluid text-center">
+        <h2>Propiedades Similares</h2>
+        <div class="title-hr"></div>
+        <div id="mini-carousel">
+            <div id="owl-carousel" class="owl-carousel">
+                @foreach (var item in Model.Similares) { 
+                    <div class="item">
+                        <a href="@Url.Action("Detalle", "Home", new { id = @item.NombreFriendly + "/" + @item.IDPropiedad })">
+                            <img src="/files/propiedades/@item.Foto" />
+                        </a>
+                        <div class="filtro-pic">
+                            <img src="/img/overlay.png" />
+                        </div>
+                        <div class="mini-prop-desc text-left">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-left"></div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right"><strong>$@item.Precio ARS</strong>/mes</div>
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <hr>
+                                <h4>
+                                    <a href="@Url.Action("Detalle", "Home", new { id = @item.NombreFriendly + "/" + @item.IDPropiedad })">@item.Zona, Buenos Aires, Argentina</a>
+                                </h4>
+                                <p class="barrio">@item.Direccion.</p>
+                                @*<p class="calle"></p>*@
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+@Html.Partial("_footer")
+<script>
+    // Tabs
+    $('#PropTabs a').click(function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+    })
+
+    // OWL CAROUSEL (http://owlcarousel.owlgraphic.com/)
+    $("#owl-carousel").owlCarousel({
+        autoplay: true,
+        autoplayTimeout: 3000,
+        autoplayHoverPause: true,
+        nav: false,
+        loop: true,
+        items: 3,
+        responsive: {
+            0: {
+                items: 1
+            },
+            768: {
+                items: 2
+            },
+            1200: {
+                items: 3
+            }
+        }
+    });
+
+    var lat = '@(Model.Latitud)';
+    var lon = '@(Model.Longitud)';
+
+    // Google Maps
+    var myLatlng = new google.maps.LatLng(lat, lon);
+
+    var mapContainer = document.getElementById('map2');
+    var mapOptions = {
+        panControl: false,
+        draggable: true,
+        zoomControl: true,
+        scrollwheel: true,
+        scaleControl: true,
+        center: myLatlng,
+        zoom: 15
+    };
+    var map = new google.maps.Map(mapContainer, mapOptions);
+    var marker = new google.maps.Marker({
+        position: myLatlng,
+        map: map,
+    });
+
+    // DATEPICKERS 
+    // http://eternicode.github.io/bootstrap-datepicker
+    // http://vitalets.github.io/bootstrap-datepicker/
+
+    ; (function ($) {
+        $.fn.datepicker.dates['es'] = {
+            days: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"],
+            daysShort: ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"],
+            daysMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa", "Do"],
+            months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+            monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+            today: "Hoy"
+        };
+    }(jQuery));
+
+    $('#checkin-datepicker input, #checkout-datepicker input').datepicker({
+        format: "dd/mm/yyyy",
+        minViewMode: 1,
+        todayBtn: true,
+        language: "es"
+    });
+
+    var cal1Desde = '@(Model.Calendario1Desde)';
+    var cal1Hasta = '@(Model.Calendario1Hasta)';
+    var cal2Desde = '@(Model.Calendario2Desde)';
+    var cal2Hasta = '@(Model.Calendario2Hasta)';
+
+    cal1Desde = cal1Desde.split(" ")[0];
+    cal1Hasta = cal1Hasta.split(" ")[0];
+    cal2Desde = cal2Desde.split(" ")[0];
+    cal2Hasta = cal2Hasta.split(" ")[0];
+
+    $('#dp6').datepicker({
+        language: "es",
+        format: "dd/mm/yyyy",
+        startDate: cal1Desde,
+        endDate: cal1Hasta
+    });
+
+    $('#dp7').datepicker({
+        language: "es",
+        format: "dd/mm/yyyy",
+        startDate: cal2Desde,
+        endDate: cal2Hasta
+    });
+
+    // COUNTERS (http://www.virtuosoft.eu/code/bootstrap-touchspin/)
+    $("input[name='ambientes']").TouchSpin({
+        verticalbuttons: true,
+        min: 1,
+        max: 4,
+    });
+
+    $("input[name='huespedes']").TouchSpin({
+        verticalbuttons: true,
+        min: 1,
+        max: 10,
+    });
+
+    $.ajax({
+        type: "POST",
+        url: "/Home/GetReservas",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].DesdeMes == 0) {//si la reserva está en calendarios anteriores
+                    if (data[i].HastaMes == 1) {//va hasta el mes 1
+                        $("#dp6").find('td.day:not(.disabled)').each(function (j, obj) {
+                            //si es menor o igual a la fecha desde de la reserva
+                            if ($(this).text() <= data[i].Desde) {
+                                $(this).addClass("reservado");
+                            }
+                        });
+                    }
+                    else if (data[i].HastaMes == 2) {//va hasta el mes 2
+                        $("#dp6").find('td.day:not(.disabled)').each(function (j, obj) {
+                            //marcamos todo el calendario 1
+                            $(this).addClass("reservado");
+                        });
+                        $("#dp7").find('td.day:not(.disabled)').each(function (j, obj) {
+                            //y hasta donde termina en calendario 2
+                            if ($(this).text() <= data[i].Desde) {
+                                $(this).addClass("reservado");
+                            }
+                        });
+                    }
+                    else if (data[i].HastaMes > 2) {//va hasta un mes que no se llega a mostrar calendario
+                        $("#dp6").find('td.day:not(.disabled)').each(function (j, obj) {
+                            //marcamos todo el calendario 1
+                            $(this).addClass("reservado");
+                        });
+                        $("#dp7").find('td.day:not(.disabled)').each(function (j, obj) {
+                            //marcamos todo el calendario 2
+                            $(this).addClass("reservado");
+                        });
+                    }
+                }
+                else if (data[i].DesdeMes == 1) {//si la reserva está en el calendario 1
+                    $("#dp6").find('td.day:not(.disabled)').each(function (j, obj) {
+                        //si es mayor o igual a la fecha desde de la reserva
+                        if ($(this).text() >= data[i].Desde) {
+                            if ((data[i].HastaMes - data[i].DesdeMes) == 1) {//si la reserva es hasta el mes siguiente
+                                $(this).addClass("reservado");
+                                $("#dp7").find("td.day:not(.disabled)").each(function (k, obj) {
+                                    if ($(this).text() <= data[i].Hasta)
+                                        $(this).addClass("reservado");
+                                });
+                            }
+                            else if ((data[i].HastaMes - data[i].DesdeMes) > 1) {//si la reserva es hasta otro mes que no se muestra el calendario
+                                $(this).addClass("reservado");
+                                $("#dp7").find("td.day:not(.disabled)").each(function (k, obj) {
+                                    $(this).addClass("reservado");
+                                });
+                            }
+                        }
+                    });
+                }
+                else if (data[i].DesdeMes == 2) {//si la reserva está en el calendario 2
+                    $("#dp7").find('td.day:not(.disabled)').each(function (j, obj) {
+                        if ($(this).text() >= data[i].Desde) {
+                            $(this).addClass("reservado");
+                        }
+                    });
+                }
+            }
+        },
+        error: function (thrownError) {
+            //alert(thrownError.responseText);
+        }
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#txtNombre, #txtApellido, #txtEmail, #txtTelefono, #txtConsulta").keypress(function (event) {
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+            if (keycode == '13') {
+                validarContacto();
+                return false;
+            }
+        });
+    });
+    function showContacto() {
+        $("#txtNombre").val("");
+        $("#txtApellido").val("");
+        $("#txtEmail").val("");
+        $("#txtTelefono").val("");
+        $("#txtConsulta").val("");
+
+        $("#lblOk").hide();
+        $("#lblError").html("");
+        $("#modal-contact").modal('show');
+    }
+
+    function validarContacto() {
+        $("#lblOk").hide()
+        $("#lblError").show();
+        var isValid = true;
+        var msg = "";
+
+        var nombre = $("#txtNombre").val();
+        var apellido = $("#txtApellido").val();
+        var email = $("#txtEmail").val();
+        var telefono = $("#txtTelefono").val();
+        var consulta = $("#txtConsulta").val();
+
+        if (nombre == "") {
+            isValid = false;
+            msg = "Debe ingresar su nombre";
+        }
+        else if (apellido == "") {
+            isValid = false;
+            msg = "Debe ingresar su apellido";
+        }
+        else if (email == "") {
+            isValid = false;
+            msg = "Debe ingresar su email";
+        }
+        else if (!IsValidEmail(email)) {
+            isValid = false;
+            msg = "Debe ingresar un email válido";
+        }
+        else if (telefono == "") {
+            isValid = false;
+            msg = "Debe ingresar un teléfono";
+        }
+        else if (consulta == "") {
+            isValid = false;
+            msg = "Debe ingresar su consulta";
+        }
+
+        if (!isValid)
+            $("#lblError").html(msg);
+        else {
+            $("#lblError").html("");
+
+            var info = "{ nombre: '" + nombre
+                + "', apellido: '" + apellido
+                + "', email: '" + email
+                + "', telefono: '" + telefono
+                + "', consulta: '" + consulta
+                + "', idProp: " + $("#hdnIDPropiedad").val()
+                + " }";
+
+            $.ajax({
+                type: "POST",
+                url: "/Home/EnviarContacto",
+                data: info,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    if (result == "false") {
+                        $("#lblError").html("No se ha podido enviar su consulta, por favor intente nuevamente");
+                    }
+                    else if (result == "true") {
+                        $("#lblError").html("");
+                        $("#lblError").hide();
+                        $("#lblOk").show();
+
+                        $("#txtNombre").val("");
+                        $("#txtApellido").val("");
+                        $("#txtEmail").val("");
+                        $("#txtTelefono").val("");
+                        $("#txtConsulta").val("");
+                    }
+                    else if (result == "error") {
+                        $("#lblError").html("Hubo un error guardando los datos, por favor intente nuevamente");
+                    }
+                },
+                error: function () {
+
+                }
+            });
+        }
+    }
+
+    function compartir(id) {
+        var url = window.location;
+        var title = "";
+        var shareUrl = "";
+        switch (id) {
+            case 1:
+                shareUrl = "https://www.facebook.com/sharer/share.php?u=" + url + "&title=" + title;
+                break;
+            case 2:
+                shareUrl = "https://twitter.com/share?url=" + url;
+                break;
+            case 3:
+                shareUrl = "https://plus.google.com/share?url=" + url;
+                break;
+            case 4:
+                shareUrl = "http://pinterest.com/pin/create/bookmarklet/?url=" + url + "&is_video=false&description=" + title;
+                break;
+        }
+        window.open(shareUrl, 'newwindow', 'width=500, height=500'); return false;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+@Html.Partial("_header")
+<section id="formulario">
+    <div class="container-fluid list-header">
+        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 text-left list-header-h">
+            <h2>
+                <img src="/img/icon-form-white.svg" />
+                Reservar propiedad
+            </h2>
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 volver">
+            <a href="@Url.Action("Detalle", "Home", new { @id = Model.Propiedad.NombreFriendly + "/" + Model.Propiedad.IDPropiedad })">&laquo; Volver a propiedad</a>
+        </div>
+    </div>
+    <div class="container-fluid list-main-cont">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-main">
+            <div class="col-lg-12 col-md-12 col-lg-12 col-xs-12 form-txt">
+                <p>Su reserva ha sido completada correctamente, un administrador se comunicará con usted.</p>
+            </div>
+        </div>
+    </div>
+</section>
+@Html.Partial("_footer")
+</body>
+</html>

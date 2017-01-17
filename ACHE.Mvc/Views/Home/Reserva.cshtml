@@ -1,0 +1,333 @@
+﻿@model ACHE.Models.ReservaFrontViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+@Html.Partial("_header")
+<section id="formulario">
+    <div class="container-fluid list-header">
+        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 text-left list-header-h">
+            <h2>
+                <img src="/img/icon-form-white.svg" />
+                Reservar propiedad
+            </h2>
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 volver">
+            <a href="@Url.Action("Detalle", "Home", new { @id = Model.Propiedad.NombreFriendly + "/" + Model.Propiedad.IDPropiedad })">&laquo; Volver a propiedad</a>
+        </div>
+    </div>
+    <div class="container-fluid list-main-cont">
+        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 form-main">
+            <div class="col-lg-12 col-md-12 col-lg-12 col-xs-12 form-txt">
+                <p>Por favor, complete todos los campos y un asesor se comunicará con usted</p>
+            </div>
+            <div class="col-lg-12 col-md-12 col-lg-12 col-xs-12 form-cont">
+                @using (Html.BeginForm("Reservar", "Home", FormMethod.Post)) {
+                    @Html.ValidationSummary(false, "", new { @style = "color: red;" })
+                    @Html.HiddenFor(m => m.IDPropiedad)
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col1">
+                        @Html.LabelFor(m => m.Cliente.Nombre)
+                        @Html.TextBoxFor(m => m.Cliente.Nombre, new { @class = "form-control" })
+
+                        @Html.LabelFor(m => m.Cliente.Apellido)
+                        @Html.TextBoxFor(m => m.Cliente.Apellido, new { @class = "form-control" })
+
+                        @Html.LabelFor(m => m.Cliente.Email)
+                        @Html.TextBoxFor(m => m.Cliente.Email, new { @class = "form-control" })
+
+                        @Html.LabelFor(m => m.Cliente.Telefono)
+                        @Html.TextBoxFor(m => m.Cliente.Telefono, new { @class = "form-control" })
+
+                        @Html.LabelFor(m => m.Cliente.Pais)
+                        @Html.TextBoxFor(m => m.Cliente.Pais, new { @class = "form-control" })
+
+                        @Html.LabelFor(m => m.Cliente.NroDocumento)
+                        @Html.TextBoxFor(m => m.Cliente.NroDocumento, new { @class = "form-control" })
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col2">
+                        @Html.LabelFor(m => m.CantHuespedes)
+                        @Html.TextBoxFor(m => m.CantHuespedes, new { @class = "form-control" })
+
+                        @Html.LabelFor(m => m.FechaIngreso)
+                        @Html.TextBoxFor(m => m.FechaIngreso, new { @class = "form-control fecha", @id = "txtFechaIngreso" })
+
+                        @Html.LabelFor(m => m.CantMeses)
+                        @Html.DropDownListFor(m => m.CantMeses, new SelectList(ViewBag.Meses, "Valor", "Texto"), new { @class = "form-control" })
+                        @*@Html.DropDownListFor(m => m.CantMeses, new List<SelectListItem>
+                             {
+                                new SelectListItem{ Text="Todos los ambientes", Value = "0", Selected=true },
+                                new SelectListItem{ Text="1", Value = "1" },
+                                new SelectListItem{ Text="2", Value = "2" },
+                                new SelectListItem{ Text="3", Value = "3" },
+                                new SelectListItem{ Text="4", Value = "4" },
+                                new SelectListItem{ Text="5", Value = "5" },
+                             }, new { @class = "form-control" })*@
+
+                        @Html.LabelFor(m => m.Observaciones)
+                        @Html.TextAreaFor(m => m.Observaciones, new { @class = "form-control", @rows = "4" })
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-lg-12 col-xs-12 form-send-area text-center">
+                        <input type="submit" class="btn btn-default-red-filled btn-medium" value="Reservar" />
+                    </div>
+                }
+            </div>
+            <div class="col-lg-12 col-md-12 col-lg-12 col-xs-12 form-social">
+                <div class="col-lg-12 col-md-12 col-lg-12 col-xs-12 form-social-header">
+                    <h4>Datos de contacto </h4>
+                    <hr class="green">
+                </div>
+                <div class="col-lg-6 col-md-6 col-xs-6 telefonos">
+                    <div class="icon">
+                        <img src="/img/icon-phone-blue.svg" />
+                    </div>
+                    <h5>Teléfonos</h5>
+                    <p>
+                        +54 9 116 669 1007 // +54 9 115 503 7583
+                    </p>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xs-6 horarios">
+                    <div class="icon">
+                        <img src="/img/icon-clock-blue.svg" />
+                    </div>
+                    <h5>Horarios de atención</h5>
+                    <p>
+                        Lunes a Viernes de 10 a 18hs.
+                    </p>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-xs-6 email">
+                    <div class="icon">
+                        <img src="/img/icon-email-blue.svg" />
+                    </div>
+                    <h5>Email</h5>
+                    <p>
+                        <a href="mailto:contact@justlikehomeargentina.com">contact@justlikehomeargentina.com</a>
+                    </p>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-xs-6 skype">
+                    <div class="icon">
+                        <img src="/img/icon-skype-blue.svg" />
+                    </div>
+                    <h5>Skype</h5>
+                    <p>justlikehome.argentina</p>
+                </div>
+                @*<div class="col-lg-4 col-md-6 col-xs-6 direccion">
+                    <div class="icon">
+                        <img src="/img/icon-placeholder-blue.svg" />
+                    </div>
+                    <h5>Dirección</h5>
+                    <p>
+                        Av. Córdoba 2356<br>
+                        Buenos Aires, Argentina
+                    </p>
+                </div>*@
+                @*<div class="col-lg-4 col-md-6 col-lg-4 col-xs-6 redes">
+                    <div class="icon">
+                        <img src="/img/icon-social-blue.svg">
+                    </div>
+                    <h5>Redes Sociales</h5>
+                    <a href="#">
+                        <img src="/img/icon-facebook.svg" alt="Facebook" class="form-redes-icon"></a>
+                    <a href="#">
+                        <img src="/img/icon-twitter.svg" alt="Twitter" class="form-redes-icon"></a>
+                    <a href="#">
+                        <img src="/img/icon-google+.svg" alt="Google+" class="form-redes-icon"></a>
+                    <a href="#">
+                        <img src="/img/icon-instagram.svg" alt="Instagram" class="form-redes-icon"></a>
+                </div>*@
+            </div>
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-12 col-lg-xs list-prop">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 detail-tabs">
+                <ul class="nav nav-tabs" role="tablist" id="PropTabs">
+                    <li role="presentation" class="active"><a href="#fotos" aria-controls="fotos" role="tab" data-toggle="tab">Fotos</a></li>
+                    @if (!string.IsNullOrEmpty(Model.Propiedad.Video)) { 
+                        <li role="presentation"><a href="#video" aria-controls="video" role="tab" data-toggle="tab">Video</a></li>
+                    }
+                    <li role="presentation"><a href="#mapa" aria-controls="mapa" role="tab" data-toggle="tab" id="tabMap">Mapa</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active prop-fotos" id="fotos">
+                        <div id="slider1-list" class="carousel slide prop-fotos-slider" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                @for (int d = 0; d < Model.Propiedad.Fotos.Count(); d++) {
+                                    if (d == 0) {
+                                    <li data-target="#slider1-list" data-slide-to="@d" class="active"></li>    
+                                    }
+                                    else {
+                                    <li data-target="#slider1-list" data-slide-to="@d"></li>        
+                                    }
+                                }
+                            </ol>
+                            <div class="carousel-inner" role="listbox">
+                                @if (Model.Propiedad.Fotos != null) {
+                                    for (int j = 0; j < Model.Propiedad.Fotos.Count(); j++) {
+                                        if (j == 0) { 
+                                    <div class="item active">
+                                        <img src="/files/propiedades/@Model.Propiedad.Fotos[j].Foto" />
+                                    </div>
+                                        }
+                                        else {
+                                    <div class="item">
+                                        <img src="/files/propiedades/@Model.Propiedad.Fotos[j].Foto" />
+                                    </div>
+                                        }
+                                    }
+                                }
+                            </div>
+                            <a class="left carousel-control" href="#slider1-list" role="button" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true">
+                                    <img src="/img/left-arrow.svg" />
+                                </span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#slider1-list" role="button" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">
+                                    <img src="/img/right-arrow.svg" />
+                                </span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                    @if (!string.IsNullOrEmpty(Model.Propiedad.Video)) { 
+                        <div role="tabpanel" class="tab-pane prop-video" id="video">
+                            <iframe class="embed-responsive-item" src="@Model.Propiedad.Video" frameborder="0" allowfullscreen width="100%" height="100%"></iframe>
+                        </div>   
+                    }
+                    <div role="tabpanel" class="tab-pane prop-mapa" id="mapa">
+                        <div id="map-canvas"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 list-prop-box">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 list-prop-content">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-left list-prop-precio">
+                        <p><strong>$@Model.Propiedad.PrecioMes ARS.</strong>/mes</p>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 list-prop-desc">
+                        <hr>
+                        <h3>@Model.Propiedad.Nombre. Código: @Model.Propiedad.Codigo</h3>
+                        <p class="barrio">@Model.Propiedad.Zona, Buenos Aires</p>
+                        <p class="calle">@Model.Propiedad.Direccion</p>
+                        <p class="text-justify">@Model.Propiedad.Descripcion</p>
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 list-prop-features">
+                            <img src="/img/icon-ambientes.svg" />@Model.Propiedad.CantAmbientes Ambientes
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 list-prop-features">
+                            <img src="/img/icon-huespedes.svg" />@Model.Propiedad.CantHuespedes Huéspedes
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@Html.Partial("_footer")
+<script>
+    // Tabs
+    $('#PropTabs a').click(function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+    })
+
+    // DATEPICKERS 
+    // http://eternicode.github.io/bootstrap-datepicker
+    // http://vitalets.github.io/bootstrap-datepicker/
+
+    ; (function ($) {
+        $.fn.datepicker.dates['es'] = {
+            days: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"],
+            daysShort: ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"],
+            daysMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa", "Do"],
+            months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+            monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+            today: "Hoy"
+        };
+    }(jQuery));
+
+    $(".numeric").numeric();
+
+    //$('.fecha').datepicker({
+    //    format: "dd/mm/yyyy",
+    //    toggleActive: false,
+    //    defaultDate: '01/01/01',
+    //    minViewMode: 1,
+    //    todayBtn: true,
+    //    language: "es"
+    //});
+
+    //$("#txtFechaIngreso").datepicker("setDate", "7/11/2011");
+
+    var desde = '@(Model.FechaIngreso.ToShortDateString())';
+    @*var hasta = '@(Model.FechaEgreso.ToShortDateString())';*@
+
+    @*var desde = new Date('@(Model.FechaIngreso.ToString("dd-MM-yyyy"))');
+    var desde = new Date('@(Model.FechaIngreso.ToString("dd-MM-yyyy"))');*@
+
+    $('.fecha').datepicker({
+        format: "dd/mm/yyyy",
+        orientation: "auto",
+        //"setDate": desde,
+        //"autoclose": true,
+        language: "es"
+    });
+
+    //$('.fecha').datepicker({
+    //    format: "dd/mm/yyyy",
+    //    todaybtn: true,
+    //    language: "es"
+    //});
+
+    if (desde != "01/01/0001")
+        $('#txtFechaIngreso').datepicker('update', desde);
+    else
+        $('#txtFechaIngreso').datepicker('update', new Date());
+
+    //if (hasta != "01/01/0001")
+    //    $('#txtFechaEgreso').datepicker('update', hasta);
+    //else
+    //    $('#txtFechaEgreso').datepicker('update', new Date());
+
+    //if (desde == "01/01/0001" || hasta == "01/01/0001") {
+    //    $('.fecha').datepicker({
+    //        format: "dd/mm/yyyy",
+    //        todaybtn: true,
+    //        language: "es"
+    //    });
+    //}
+    //else {
+    //    $('#txtFechaIngreso').val(desde);
+    //    $('#txtFechaEgreso').val(hasta);
+    //}
+
+    $('a[href="#mapa"]').on('shown.bs.tab', function () {
+        // Google Maps
+
+        var lat = '@(Model.Propiedad.Latitud)';
+        var lon = '@(Model.Propiedad.Longitud)';
+
+        var myLatlng = new google.maps.LatLng(lat, lon);
+
+        var mapContainer = document.getElementById('map-canvas');
+        var mapOptions = {
+            panControl: false,
+            draggable: true,
+            zoomControl: true,
+            scrollwheel: true,
+            scaleControl: true,
+            center: myLatlng,
+            zoom: 15
+        };
+        var map = new google.maps.Map(mapContainer, mapOptions);
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+        });
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,742 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="JustLikeHomeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="IDCliente" />
+          </Key>
+          <Property Name="IDCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Apellido" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pais" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NroDocumento" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaAlta" Type="datetime" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contactos">
+          <Key>
+            <PropertyRef Name="IDContacto" />
+          </Key>
+          <Property Name="IDContacto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mensaje" Type="text" Nullable="false" />
+          <Property Name="IDPropiedad" Type="int" />
+          <Property Name="Telefono" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Fotos">
+          <Key>
+            <PropertyRef Name="IDFoto" />
+          </Key>
+          <Property Name="IDFoto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Foto" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="Orden" Type="int" Nullable="false" />
+          <Property Name="IDPropiedad" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ListasPrecio">
+          <Key>
+            <PropertyRef Name="IDListaPrecio" />
+          </Key>
+          <Property Name="IDListaPrecio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Precios">
+          <Key>
+            <PropertyRef Name="IDPrecio" />
+          </Key>
+          <Property Name="IDPrecio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ValorDia" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ValorSemana" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ValorQuincena" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ValorMes" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="VigenciaDesde" Type="datetime" Nullable="false" />
+          <Property Name="VigenciaHasta" Type="datetime" Nullable="false" />
+          <Property Name="IDListaPrecio" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Propiedades">
+          <Key>
+            <PropertyRef Name="IDPropiedad" />
+          </Key>
+          <Property Name="IDPropiedad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDZona" Type="int" Nullable="false" />
+          <Property Name="IDListaPrecio" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="50" />
+          <Property Name="Nombre" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="Tipo" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Calificacion" Type="int" Nullable="false" />
+          <Property Name="MinCantDias" Type="int" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Descripcion" Type="text" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="Destacado" Type="bit" Nullable="false" />
+          <Property Name="Metros" Type="int" Nullable="false" />
+          <Property Name="CantAmbientes" Type="int" Nullable="false" />
+          <Property Name="CantHuespedes" Type="int" Nullable="false" />
+          <Property Name="CantCamas" Type="int" Nullable="false" />
+          <Property Name="Video" Type="varchar" MaxLength="128" />
+          <Property Name="Latitud" Type="varchar" MaxLength="50" />
+          <Property Name="Longitud" Type="varchar" MaxLength="50" />
+          <Property Name="DescripcionBreve" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="PropiedadesServicios">
+          <Key>
+            <PropertyRef Name="IDDepartamentosServicios" />
+          </Key>
+          <Property Name="IDDepartamentosServicios" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDPropiedad" Type="int" Nullable="false" />
+          <Property Name="IDServicio" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reservas">
+          <Key>
+            <PropertyRef Name="IDReserva" />
+          </Key>
+          <Property Name="IDReserva" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDPropiedad" Type="int" Nullable="false" />
+          <Property Name="TipoReserva" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="FechaIngreso" Type="datetime" Nullable="false" />
+          <Property Name="FechaEgreso" Type="datetime" Nullable="false" />
+          <Property Name="Observaciones" Type="text" />
+          <Property Name="IDCliente" Type="int" Nullable="false" />
+          <Property Name="FechaReserva" Type="datetime" Nullable="false" />
+          <Property Name="PrecioTotal" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CantMeses" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Servicios">
+          <Key>
+            <PropertyRef Name="IDServicio" />
+          </Key>
+          <Property Name="IDServicio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Imagen" Type="varchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="Zonas">
+          <Key>
+            <PropertyRef Name="IDZona" />
+          </Key>
+          <Property Name="IDZona" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Contactos_Propiedades">
+          <End Role="Propiedades" Type="Self.Propiedades" Multiplicity="0..1" />
+          <End Role="Contactos" Type="Self.Contactos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Propiedades">
+              <PropertyRef Name="IDPropiedad" />
+            </Principal>
+            <Dependent Role="Contactos">
+              <PropertyRef Name="IDPropiedad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fotos_Propiedades">
+          <End Role="Propiedades" Type="Self.Propiedades" Multiplicity="1" />
+          <End Role="Fotos" Type="Self.Fotos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Propiedades">
+              <PropertyRef Name="IDPropiedad" />
+            </Principal>
+            <Dependent Role="Fotos">
+              <PropertyRef Name="IDPropiedad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Precios_ListasPrecio">
+          <End Role="ListasPrecio" Type="Self.ListasPrecio" Multiplicity="1" />
+          <End Role="Precios" Type="Self.Precios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListasPrecio">
+              <PropertyRef Name="IDListaPrecio" />
+            </Principal>
+            <Dependent Role="Precios">
+              <PropertyRef Name="IDListaPrecio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Propiedades_ListasPrecio">
+          <End Role="ListasPrecio" Type="Self.ListasPrecio" Multiplicity="1" />
+          <End Role="Propiedades" Type="Self.Propiedades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListasPrecio">
+              <PropertyRef Name="IDListaPrecio" />
+            </Principal>
+            <Dependent Role="Propiedades">
+              <PropertyRef Name="IDListaPrecio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Propiedades_Zonas">
+          <End Role="Zonas" Type="Self.Zonas" Multiplicity="1" />
+          <End Role="Propiedades" Type="Self.Propiedades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zonas">
+              <PropertyRef Name="IDZona" />
+            </Principal>
+            <Dependent Role="Propiedades">
+              <PropertyRef Name="IDZona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PropiedadesServicios_Propiedades">
+          <End Role="Propiedades" Type="Self.Propiedades" Multiplicity="1" />
+          <End Role="PropiedadesServicios" Type="Self.PropiedadesServicios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Propiedades">
+              <PropertyRef Name="IDPropiedad" />
+            </Principal>
+            <Dependent Role="PropiedadesServicios">
+              <PropertyRef Name="IDPropiedad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PropiedadesServicios_Servicios">
+          <End Role="Servicios" Type="Self.Servicios" Multiplicity="1" />
+          <End Role="PropiedadesServicios" Type="Self.PropiedadesServicios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicios">
+              <PropertyRef Name="IDServicio" />
+            </Principal>
+            <Dependent Role="PropiedadesServicios">
+              <PropertyRef Name="IDServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reservas_Clientes">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="IDCliente" />
+            </Principal>
+            <Dependent Role="Reservas">
+              <PropertyRef Name="IDCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reservas_Propiedades">
+          <End Role="Propiedades" Type="Self.Propiedades" Multiplicity="1" />
+          <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Propiedades">
+              <PropertyRef Name="IDPropiedad" />
+            </Principal>
+            <Dependent Role="Reservas">
+              <PropertyRef Name="IDPropiedad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="JustLikeHomeModelStoreContainer">
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contactos" EntityType="Self.Contactos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fotos" EntityType="Self.Fotos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ListasPrecio" EntityType="Self.ListasPrecio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Precios" EntityType="Self.Precios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Propiedades" EntityType="Self.Propiedades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PropiedadesServicios" EntityType="Self.PropiedadesServicios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reservas" EntityType="Self.Reservas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Servicios" EntityType="Self.Servicios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zonas" EntityType="Self.Zonas" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Contactos_Propiedades" Association="Self.FK_Contactos_Propiedades">
+            <End Role="Propiedades" EntitySet="Propiedades" />
+            <End Role="Contactos" EntitySet="Contactos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fotos_Propiedades" Association="Self.FK_Fotos_Propiedades">
+            <End Role="Propiedades" EntitySet="Propiedades" />
+            <End Role="Fotos" EntitySet="Fotos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Precios_ListasPrecio" Association="Self.FK_Precios_ListasPrecio">
+            <End Role="ListasPrecio" EntitySet="ListasPrecio" />
+            <End Role="Precios" EntitySet="Precios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Propiedades_ListasPrecio" Association="Self.FK_Propiedades_ListasPrecio">
+            <End Role="ListasPrecio" EntitySet="ListasPrecio" />
+            <End Role="Propiedades" EntitySet="Propiedades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Propiedades_Zonas" Association="Self.FK_Propiedades_Zonas">
+            <End Role="Zonas" EntitySet="Zonas" />
+            <End Role="Propiedades" EntitySet="Propiedades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PropiedadesServicios_Propiedades" Association="Self.FK_PropiedadesServicios_Propiedades">
+            <End Role="Propiedades" EntitySet="Propiedades" />
+            <End Role="PropiedadesServicios" EntitySet="PropiedadesServicios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PropiedadesServicios_Servicios" Association="Self.FK_PropiedadesServicios_Servicios">
+            <End Role="Servicios" EntitySet="Servicios" />
+            <End Role="PropiedadesServicios" EntitySet="PropiedadesServicios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reservas_Clientes" Association="Self.FK_Reservas_Clientes">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Reservas" EntitySet="Reservas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reservas_Propiedades" Association="Self.FK_Reservas_Propiedades">
+            <End Role="Propiedades" EntitySet="Propiedades" />
+            <End Role="Reservas" EntitySet="Reservas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="JustLikeHomeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="IDCliente" />
+          </Key>
+          <Property Name="IDCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pais" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NroDocumento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaAlta" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Reservas" Relationship="Self.FK_Reservas_Clientes" FromRole="Clientes" ToRole="Reservas" />
+        </EntityType>
+        <EntityType Name="Contactos">
+          <Key>
+            <PropertyRef Name="IDContacto" />
+          </Key>
+          <Property Name="IDContacto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mensaje" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IDPropiedad" Type="Int32" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Propiedades" Relationship="Self.FK_Contactos_Propiedades" FromRole="Contactos" ToRole="Propiedades" />
+        </EntityType>
+        <EntityType Name="Fotos">
+          <Key>
+            <PropertyRef Name="IDFoto" />
+          </Key>
+          <Property Name="IDFoto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Foto" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Orden" Type="Int32" Nullable="false" />
+          <Property Name="IDPropiedad" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Propiedades" Relationship="Self.FK_Fotos_Propiedades" FromRole="Fotos" ToRole="Propiedades" />
+        </EntityType>
+        <EntityType Name="ListasPrecio">
+          <Key>
+            <PropertyRef Name="IDListaPrecio" />
+          </Key>
+          <Property Name="IDListaPrecio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Precios" Relationship="Self.FK_Precios_ListasPrecio" FromRole="ListasPrecio" ToRole="Precios" />
+          <NavigationProperty Name="Propiedades" Relationship="Self.FK_Propiedades_ListasPrecio" FromRole="ListasPrecio" ToRole="Propiedades" />
+        </EntityType>
+        <EntityType Name="Precios">
+          <Key>
+            <PropertyRef Name="IDPrecio" />
+          </Key>
+          <Property Name="IDPrecio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ValorDia" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ValorSemana" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ValorQuincena" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ValorMes" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="VigenciaDesde" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="VigenciaHasta" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IDListaPrecio" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ListasPrecio" Relationship="Self.FK_Precios_ListasPrecio" FromRole="Precios" ToRole="ListasPrecio" />
+        </EntityType>
+        <EntityType Name="Propiedades">
+          <Key>
+            <PropertyRef Name="IDPropiedad" />
+          </Key>
+          <Property Name="IDPropiedad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDZona" Type="Int32" Nullable="false" />
+          <Property Name="IDListaPrecio" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tipo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Calificacion" Type="Int32" Nullable="false" />
+          <Property Name="MinCantDias" Type="Int32" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="Destacado" Type="Boolean" Nullable="false" />
+          <Property Name="Metros" Type="Int32" Nullable="false" />
+          <Property Name="CantAmbientes" Type="Int32" Nullable="false" />
+          <Property Name="CantHuespedes" Type="Int32" Nullable="false" />
+          <Property Name="CantCamas" Type="Int32" Nullable="false" />
+          <Property Name="Video" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Latitud" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Longitud" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DescripcionBreve" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Contactos" Relationship="Self.FK_Contactos_Propiedades" FromRole="Propiedades" ToRole="Contactos" />
+          <NavigationProperty Name="Fotos" Relationship="Self.FK_Fotos_Propiedades" FromRole="Propiedades" ToRole="Fotos" />
+          <NavigationProperty Name="ListasPrecio" Relationship="Self.FK_Propiedades_ListasPrecio" FromRole="Propiedades" ToRole="ListasPrecio" />
+          <NavigationProperty Name="Zonas" Relationship="Self.FK_Propiedades_Zonas" FromRole="Propiedades" ToRole="Zonas" />
+          <NavigationProperty Name="PropiedadesServicios" Relationship="Self.FK_PropiedadesServicios_Propiedades" FromRole="Propiedades" ToRole="PropiedadesServicios" />
+          <NavigationProperty Name="Reservas" Relationship="Self.FK_Reservas_Propiedades" FromRole="Propiedades" ToRole="Reservas" />
+        </EntityType>
+        <EntityType Name="PropiedadesServicios">
+          <Key>
+            <PropertyRef Name="IDDepartamentosServicios" />
+          </Key>
+          <Property Name="IDDepartamentosServicios" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDPropiedad" Type="Int32" Nullable="false" />
+          <Property Name="IDServicio" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Propiedades" Relationship="Self.FK_PropiedadesServicios_Propiedades" FromRole="PropiedadesServicios" ToRole="Propiedades" />
+          <NavigationProperty Name="Servicios" Relationship="Self.FK_PropiedadesServicios_Servicios" FromRole="PropiedadesServicios" ToRole="Servicios" />
+        </EntityType>
+        <EntityType Name="Reservas">
+          <Key>
+            <PropertyRef Name="IDReserva" />
+          </Key>
+          <Property Name="IDReserva" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDPropiedad" Type="Int32" Nullable="false" />
+          <Property Name="TipoReserva" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaIngreso" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaEgreso" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IDCliente" Type="Int32" Nullable="false" />
+          <Property Name="FechaReserva" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PrecioTotal" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CantMeses" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Clientes" Relationship="Self.FK_Reservas_Clientes" FromRole="Reservas" ToRole="Clientes" />
+          <NavigationProperty Name="Propiedades" Relationship="Self.FK_Reservas_Propiedades" FromRole="Reservas" ToRole="Propiedades" />
+        </EntityType>
+        <EntityType Name="Servicios">
+          <Key>
+            <PropertyRef Name="IDServicio" />
+          </Key>
+          <Property Name="IDServicio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Imagen" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PropiedadesServicios" Relationship="Self.FK_PropiedadesServicios_Servicios" FromRole="Servicios" ToRole="PropiedadesServicios" />
+        </EntityType>
+        <EntityType Name="Zonas">
+          <Key>
+            <PropertyRef Name="IDZona" />
+          </Key>
+          <Property Name="IDZona" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Propiedades" Relationship="Self.FK_Propiedades_Zonas" FromRole="Zonas" ToRole="Propiedades" />
+        </EntityType>
+        <Association Name="FK_Reservas_Clientes">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="IDCliente" />
+            </Principal>
+            <Dependent Role="Reservas">
+              <PropertyRef Name="IDCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contactos_Propiedades">
+          <End Role="Propiedades" Type="Self.Propiedades" Multiplicity="0..1" />
+          <End Role="Contactos" Type="Self.Contactos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Propiedades">
+              <PropertyRef Name="IDPropiedad" />
+            </Principal>
+            <Dependent Role="Contactos">
+              <PropertyRef Name="IDPropiedad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fotos_Propiedades">
+          <End Role="Propiedades" Type="Self.Propiedades" Multiplicity="1" />
+          <End Role="Fotos" Type="Self.Fotos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Propiedades">
+              <PropertyRef Name="IDPropiedad" />
+            </Principal>
+            <Dependent Role="Fotos">
+              <PropertyRef Name="IDPropiedad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Precios_ListasPrecio">
+          <End Role="ListasPrecio" Type="Self.ListasPrecio" Multiplicity="1" />
+          <End Role="Precios" Type="Self.Precios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListasPrecio">
+              <PropertyRef Name="IDListaPrecio" />
+            </Principal>
+            <Dependent Role="Precios">
+              <PropertyRef Name="IDListaPrecio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Propiedades_ListasPrecio">
+          <End Role="ListasPrecio" Type="Self.ListasPrecio" Multiplicity="1" />
+          <End Role="Propiedades" Type="Self.Propiedades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListasPrecio">
+              <PropertyRef Name="IDListaPrecio" />
+            </Principal>
+            <Dependent Role="Propiedades">
+              <PropertyRef Name="IDListaPrecio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Propiedades_Zonas">
+          <End Role="Zonas" Type="Self.Zonas" Multiplicity="1" />
+          <End Role="Propiedades" Type="Self.Propiedades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zonas">
+              <PropertyRef Name="IDZona" />
+            </Principal>
+            <Dependent Role="Propiedades">
+              <PropertyRef Name="IDZona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PropiedadesServicios_Propiedades">
+          <End Role="Propiedades" Type="Self.Propiedades" Multiplicity="1" />
+          <End Role="PropiedadesServicios" Type="Self.PropiedadesServicios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Propiedades">
+              <PropertyRef Name="IDPropiedad" />
+            </Principal>
+            <Dependent Role="PropiedadesServicios">
+              <PropertyRef Name="IDPropiedad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reservas_Propiedades">
+          <End Role="Propiedades" Type="Self.Propiedades" Multiplicity="1" />
+          <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Propiedades">
+              <PropertyRef Name="IDPropiedad" />
+            </Principal>
+            <Dependent Role="Reservas">
+              <PropertyRef Name="IDPropiedad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PropiedadesServicios_Servicios">
+          <End Role="Servicios" Type="Self.Servicios" Multiplicity="1" />
+          <End Role="PropiedadesServicios" Type="Self.PropiedadesServicios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicios">
+              <PropertyRef Name="IDServicio" />
+            </Principal>
+            <Dependent Role="PropiedadesServicios">
+              <PropertyRef Name="IDServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" />
+          <EntitySet Name="Contactos" EntityType="Self.Contactos" />
+          <EntitySet Name="Fotos" EntityType="Self.Fotos" />
+          <EntitySet Name="ListasPrecio" EntityType="Self.ListasPrecio" />
+          <EntitySet Name="Precios" EntityType="Self.Precios" />
+          <EntitySet Name="Propiedades" EntityType="Self.Propiedades" />
+          <EntitySet Name="PropiedadesServicios" EntityType="Self.PropiedadesServicios" />
+          <EntitySet Name="Reservas" EntityType="Self.Reservas" />
+          <EntitySet Name="Servicios" EntityType="Self.Servicios" />
+          <EntitySet Name="Zonas" EntityType="Self.Zonas" />
+          <AssociationSet Name="FK_Reservas_Clientes" Association="Self.FK_Reservas_Clientes">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Reservas" EntitySet="Reservas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contactos_Propiedades" Association="Self.FK_Contactos_Propiedades">
+            <End Role="Propiedades" EntitySet="Propiedades" />
+            <End Role="Contactos" EntitySet="Contactos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fotos_Propiedades" Association="Self.FK_Fotos_Propiedades">
+            <End Role="Propiedades" EntitySet="Propiedades" />
+            <End Role="Fotos" EntitySet="Fotos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Precios_ListasPrecio" Association="Self.FK_Precios_ListasPrecio">
+            <End Role="ListasPrecio" EntitySet="ListasPrecio" />
+            <End Role="Precios" EntitySet="Precios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Propiedades_ListasPrecio" Association="Self.FK_Propiedades_ListasPrecio">
+            <End Role="ListasPrecio" EntitySet="ListasPrecio" />
+            <End Role="Propiedades" EntitySet="Propiedades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Propiedades_Zonas" Association="Self.FK_Propiedades_Zonas">
+            <End Role="Zonas" EntitySet="Zonas" />
+            <End Role="Propiedades" EntitySet="Propiedades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PropiedadesServicios_Propiedades" Association="Self.FK_PropiedadesServicios_Propiedades">
+            <End Role="Propiedades" EntitySet="Propiedades" />
+            <End Role="PropiedadesServicios" EntitySet="PropiedadesServicios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reservas_Propiedades" Association="Self.FK_Reservas_Propiedades">
+            <End Role="Propiedades" EntitySet="Propiedades" />
+            <End Role="Reservas" EntitySet="Reservas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PropiedadesServicios_Servicios" Association="Self.FK_PropiedadesServicios_Servicios">
+            <End Role="Servicios" EntitySet="Servicios" />
+            <End Role="PropiedadesServicios" EntitySet="PropiedadesServicios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="JustLikeHomeModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="JustLikeHomeModel.Clientes">
+              <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="NroDocumento" ColumnName="NroDocumento" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contactos">
+            <EntityTypeMapping TypeName="JustLikeHomeModel.Contactos">
+              <MappingFragment StoreEntitySet="Contactos">
+                <ScalarProperty Name="IDContacto" ColumnName="IDContacto" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+                <ScalarProperty Name="IDPropiedad" ColumnName="IDPropiedad" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fotos">
+            <EntityTypeMapping TypeName="JustLikeHomeModel.Fotos">
+              <MappingFragment StoreEntitySet="Fotos">
+                <ScalarProperty Name="IDFoto" ColumnName="IDFoto" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
+                <ScalarProperty Name="IDPropiedad" ColumnName="IDPropiedad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListasPrecio">
+            <EntityTypeMapping TypeName="JustLikeHomeModel.ListasPrecio">
+              <MappingFragment StoreEntitySet="ListasPrecio">
+                <ScalarProperty Name="IDListaPrecio" ColumnName="IDListaPrecio" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Precios">
+            <EntityTypeMapping TypeName="JustLikeHomeModel.Precios">
+              <MappingFragment StoreEntitySet="Precios">
+                <ScalarProperty Name="IDPrecio" ColumnName="IDPrecio" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ValorDia" ColumnName="ValorDia" />
+                <ScalarProperty Name="ValorSemana" ColumnName="ValorSemana" />
+                <ScalarProperty Name="ValorQuincena" ColumnName="ValorQuincena" />
+                <ScalarProperty Name="ValorMes" ColumnName="ValorMes" />
+                <ScalarProperty Name="VigenciaDesde" ColumnName="VigenciaDesde" />
+                <ScalarProperty Name="VigenciaHasta" ColumnName="VigenciaHasta" />
+                <ScalarProperty Name="IDListaPrecio" ColumnName="IDListaPrecio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Propiedades">
+            <EntityTypeMapping TypeName="JustLikeHomeModel.Propiedades">
+              <MappingFragment StoreEntitySet="Propiedades">
+                <ScalarProperty Name="IDPropiedad" ColumnName="IDPropiedad" />
+                <ScalarProperty Name="IDZona" ColumnName="IDZona" />
+                <ScalarProperty Name="IDListaPrecio" ColumnName="IDListaPrecio" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Calificacion" ColumnName="Calificacion" />
+                <ScalarProperty Name="MinCantDias" ColumnName="MinCantDias" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Destacado" ColumnName="Destacado" />
+                <ScalarProperty Name="Metros" ColumnName="Metros" />
+                <ScalarProperty Name="CantAmbientes" ColumnName="CantAmbientes" />
+                <ScalarProperty Name="CantHuespedes" ColumnName="CantHuespedes" />
+                <ScalarProperty Name="CantCamas" ColumnName="CantCamas" />
+                <ScalarProperty Name="Video" ColumnName="Video" />
+                <ScalarProperty Name="Latitud" ColumnName="Latitud" />
+                <ScalarProperty Name="Longitud" ColumnName="Longitud" />
+                <ScalarProperty Name="DescripcionBreve" ColumnName="DescripcionBreve" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropiedadesServicios">
+            <EntityTypeMapping TypeName="JustLikeHomeModel.PropiedadesServicios">
+              <MappingFragment StoreEntitySet="PropiedadesServicios">
+                <ScalarProperty Name="IDDepartamentosServicios" ColumnName="IDDepartamentosServicios" />
+                <ScalarProperty Name="IDPropiedad" ColumnName="IDPropiedad" />
+                <ScalarProperty Name="IDServicio" ColumnName="IDServicio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservas">
+            <EntityTypeMapping TypeName="JustLikeHomeModel.Reservas">
+              <MappingFragment StoreEntitySet="Reservas">
+                <ScalarProperty Name="IDReserva" ColumnName="IDReserva" />
+                <ScalarProperty Name="IDPropiedad" ColumnName="IDPropiedad" />
+                <ScalarProperty Name="TipoReserva" ColumnName="TipoReserva" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="FechaEgreso" ColumnName="FechaEgreso" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
+                <ScalarProperty Name="FechaReserva" ColumnName="FechaReserva" />
+                <ScalarProperty Name="PrecioTotal" ColumnName="PrecioTotal" />
+                <ScalarProperty Name="CantMeses" ColumnName="CantMeses" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Servicios">
+            <EntityTypeMapping TypeName="JustLikeHomeModel.Servicios">
+              <MappingFragment StoreEntitySet="Servicios">
+                <ScalarProperty Name="IDServicio" ColumnName="IDServicio" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zonas">
+            <EntityTypeMapping TypeName="JustLikeHomeModel.Zonas">
+              <MappingFragment StoreEntitySet="Zonas">
+                <ScalarProperty Name="IDZona" ColumnName="IDZona" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

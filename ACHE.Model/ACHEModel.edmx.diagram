@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d4e499ce74b047d8836b1bc516c988de" Name="Diagram1">
+        <EntityTypeShape EntityType="JustLikeHomeModel.Clientes" Width="1.5" PointX="9" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="JustLikeHomeModel.Contactos" Width="1.5" PointX="8.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="JustLikeHomeModel.Fotos" Width="1.5" PointX="8.25" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="JustLikeHomeModel.ListasPrecio" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="JustLikeHomeModel.Precios" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="JustLikeHomeModel.Propiedades" Width="1.5" PointX="6" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="JustLikeHomeModel.PropiedadesServicios" Width="1.5" PointX="11.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="JustLikeHomeModel.Reservas" Width="1.5" PointX="11.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JustLikeHomeModel.Servicios" Width="1.5" PointX="9" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="JustLikeHomeModel.Zonas" Width="1.5" PointX="3.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="JustLikeHomeModel.FK_Reservas_Clientes" ManuallyRouted="false" />
+        <AssociationConnector Association="JustLikeHomeModel.FK_Contactos_Propiedades" ManuallyRouted="false" />
+        <AssociationConnector Association="JustLikeHomeModel.FK_Fotos_Propiedades" ManuallyRouted="false" />
+        <AssociationConnector Association="JustLikeHomeModel.FK_Precios_ListasPrecio" ManuallyRouted="false" />
+        <AssociationConnector Association="JustLikeHomeModel.FK_Propiedades_ListasPrecio" ManuallyRouted="false" />
+        <AssociationConnector Association="JustLikeHomeModel.FK_Propiedades_Zonas" ManuallyRouted="false" />
+        <AssociationConnector Association="JustLikeHomeModel.FK_PropiedadesServicios_Propiedades" ManuallyRouted="false" />
+        <AssociationConnector Association="JustLikeHomeModel.FK_Reservas_Propiedades" ManuallyRouted="false" />
+        <AssociationConnector Association="JustLikeHomeModel.FK_PropiedadesServicios_Servicios" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
